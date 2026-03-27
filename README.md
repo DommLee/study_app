@@ -1,141 +1,265 @@
-# OmniTutor v3
+# 🎓 OmniTutor v3
 
-Document-grounded AI study workspace.
+**Document-grounded AI study workspace.**
 
-OmniTutor answers from uploaded source files only. Chat, quiz, and flashcards stay locked to the indexed documents in the active session.
+OmniTutor, yüklediğin dokümanlardan yapay zekâ destekli sohbet, quiz ve flashcard üreten kişisel çalışma asOmniTutor answers from uploaded source files only. Chat, quiz, and flashcards stay locked to the indexed documents in the active session.
 
-## Features
-- Document-grounded chat
-- Multi-provider AI settings: Ollama, Gemini, OpenAI, Groq, DeepSeek, Custom OpenAI-compatible
-- Study mode, quiz, flashcards, pomodoro, progress dashboard
-- File upload support: PDF, TXT, MD, PNG, JPG, WEBP, PPT/PPTX
-- Session persistence on disk
+<p align="center">
+  <img src="public/assets/screenshot1.png" alt="OmniTutor Dashboard Ekran Görüntüsü" width="800" />
+  <br/>
+  <em>OmniTutor Çalışma Paneli</em>
+</p>
 
-## Runtime Modes
-### Docker first
-1. Make sure Docker Desktop is running.
-2. If you want local Ollama inside Docker, make sure Ollama is reachable on the host at `http://localhost:11434`.
-3. Start the app:
+<p align="center">
+  <img src="public/assets/screenshot2.png" alt="OmniTutor Chat Ekran Görüntüsü" width="800" />
+  <br/>
+  <em>Dokümanlarla Sohbet</em>
+</p>
+
+---
+
+## ✨ Özellikler
+
+| Özellik | Açıklama |
+|---------|----------|
+| 💬 Dokümana dayalı sohbet | Yüklenen dosyalar üzerinden soru-cevap |
+| 📝 Quiz & Flashcard | Otomatik quiz ve flashcard oluşturma |
+| 🤖 Çoklu AI sağlayıcı | Ollama, Gemini, OpenAI, Groq, DeepSeek, Custom |
+| 📄 Dosya desteği | PDF, TXT, MD, PNG, JPG, WEBP, PPT/PPTX |
+| ⏱️ Pomodoro zamanlayıcı | Odaklanma modu ile verimli çalışma |
+| 📊 İlerleme panosu | Çalışma istatistikleri takibi |
+| 💾 Oturum kaydetme | Oturumlar diskte kalıcı olarak saklanır |
+
+---
+
+## 🚀 Kurulum Rehberi (Adım Adım)
+
+Projeyi kendi bilgisayarında çalıştırmak için aşağıdaki yöntemlerden birini seç.
+
+### Gereksinimler
+
+Başlamadan önce bunlardan **en az birini** kur:
+
+| Araç | İndirme Linki | Açıklama |
+|------|---------------|----------|
+| **Git** | [git-scm.com](https://git-scm.com/downloads) | Repoyu klonlamak için |
+| **Node.js** (v18+) | [nodejs.org](https://nodejs.org/) | Yöntem 1 için gerekli |
+| **Docker Desktop** | [docker.com](https://www.docker.com/products/docker-desktop/) | Yöntem 2 için gerekli |
+
+---
+
+### 📦 Yöntem 1: Node.js ile Kurulum (Kolay)
+
+Docker bilmiyorsan bu yöntemi kullan. En basit yol budur.
+
+#### Adım 1 — Node.js Kur
+[nodejs.org](https://nodejs.org/) adresinden **LTS** sürümünü indir ve kur.
+Kurulumu doğrulamak için terminali aç ve şunu yaz:
 ```powershell
-start.bat
+node --version
+npm --version
 ```
-Or:
-```powershell
-docker compose up --build -d
-```
-4. Open [http://localhost:3030](http://localhost:3030).
+İkisi de versiyon numarası veriyorsa kurulum tamamdır.
 
-### Local Node runtime
+#### Adım 2 — Repoyu Klonla
+```powershell
+git clone https://github.com/DommLee/study_app.git
+cd study_app
+```
+
+#### Adım 3 — Bağımlılıkları Kur
 ```powershell
 npm install
-node server.js
 ```
-Then open [http://localhost:3030](http://localhost:3030).
 
-Security note:
-- Local Node runtime now binds to `127.0.0.1` by default.
-- If you explicitly want LAN access, set `HOST=0.0.0.0`.
-- Docker keeps `0.0.0.0` inside the container so browser access through `localhost:3030` still works normally.
-
-## Share On GitHub
-Before publishing this project:
-- Do not publish `data/config.json` with real API keys inside it.
-- `data/`, `.env`, `node_modules/`, uploads, and runtime logs are already ignored by `.gitignore`.
-- Create a fresh `.env` from `.env.example` if you want environment-based defaults.
-- If you already used a real Gemini/OpenAI/Groq/DeepSeek key locally, rotate it before sharing.
-- Your personal local settings can stay on your machine; they are not meant to be committed.
-
-Typical GitHub flow:
+#### Adım 4 — Ortam Değişkenlerini Ayarla
+`.env.example` dosyasını kopyalayarak `.env` dosyası oluştur:
 ```powershell
-git init
-git add .
-git commit -m "Initial OmniTutor v3"
-git branch -M main
-git remote add origin <YOUR_GITHUB_REPO_URL>
-git push -u origin main
+copy .env.example .env
+```
+Sonra `.env` dosyasını herhangi bir text editörle aç ve API anahtarını yaz:
+```env
+# Gemini kullanmak istiyorsan:
+GEMINI_API_KEY=senin_api_key_in
+
+# Veya Ollama kullanmak istiyorsan (lokal AI):
+AI_PROVIDER=ollama
 ```
 
-## Friend Setup
-Your friends have 2 realistic ways to use the app.
+> **💡 İpucu:** API anahtarı almak için:
+> - **Gemini:** [aistudio.google.com](https://aistudio.google.com/apikey) → Ücretsiz API key al
+> - **Groq:** [console.groq.com](https://console.groq.com/keys) → Ücretsiz key al
+> - **Ollama:** [ollama.com](https://ollama.com/) → İndir ve kur, key gerekmez
 
-### Option 1: Run it locally with Docker
-Best when each person will use their own AI provider or their own Ollama instance.
-
-Steps:
-1. Install [Docker Desktop](https://www.docker.com/products/docker-desktop/).
-2. Clone the repo:
+#### Adım 5 — Uygulamayı Başlat
 ```powershell
-git clone <YOUR_GITHUB_REPO_URL>
-cd omnitutor-v3
+npm start
 ```
-3. Start the app:
+
+#### Adım 6 — Tarayıcıda Aç
+```
+http://localhost:3030
+```
+
+✅ **Hepsi bu kadar!** Uygulama çalışıyordur.
+
+---
+
+### 🐳 Yöntem 2: Docker ile Kurulum
+
+Docker biliyorsan bu yöntem daha pratik — hiçbir şey ayrıca kurmana gerek kalmaz.
+
+#### Adım 1 — Docker Desktop Kur
+[docker.com](https://www.docker.com/products/docker-desktop/) adresinden indir ve kur.
+Kurulduktan sonra Docker Desktop uygulamasını çalıştır.
+
+#### Adım 2 — Repoyu Klonla
+```powershell
+git clone https://github.com/DommLee/study_app.git
+cd study_app
+```
+
+#### Adım 3 — Ortam Değişkenlerini Ayarla
+```powershell
+copy .env.example .env
+```
+`.env` dosyasını düzenle ve API anahtarını gir (yukarıdaki Yöntem 1, Adım 4'e bak).
+
+#### Adım 4 — Docker ile Başlat
+Windows'ta:
 ```powershell
 start.bat
 ```
-or
+Veya doğrudan:
 ```powershell
 docker compose up --build -d
 ```
-4. Open [http://localhost:3030](http://localhost:3030).
-5. In Settings:
-   - choose `Ollama` if they already have Ollama running locally, or
-   - choose a cloud provider and enter their own API key.
 
-Notes:
-- For local Ollama, `http://localhost:11434` is enough; the app normalizes `/v1`.
-- For PowerPoint preview generation on Windows, Microsoft PowerPoint should be installed if they want PPT/PPTX rendered as slide preview instead of text-only fallback.
+#### Adım 5 — Tarayıcıda Aç
+```
+http://localhost:3030
+```
 
-### Option 2: Deploy it once and share a URL
-Best when you want a central hosted app for the whole group.
+> **📝 Not:** Docker ile Ollama kullanmak istiyorsan, Ollama'yı bilgisayarında ayrıca kur ve çalıştır.
+> Docker uygulaması otomatik olarak `host.docker.internal:11434` üzerinden erişir.
 
-What this means:
-- You deploy the app to one machine or cloud host.
-- Your friends open one shared URL in the browser.
-- You must decide who pays for AI usage and how provider keys are managed.
+---
 
-If you want this mode, GitHub alone is not enough. You also need:
-- a server/VPS or a cloud platform,
-- persistent storage for `data/`,
-- one approved AI provider strategy.
+## ⚙️ Uygulama İçi Ayarlar
 
-## Recommended Sharing Strategy
-For now, the simplest stable route is:
-1. Publish the code to GitHub.
-2. Let each friend run it locally with Docker.
-3. Let each friend choose either:
-   - local Ollama, or
-   - their own cloud API key.
+Uygulamayı açtıktan sonra **Ayarlar** (⚙️) butonuna tıkla:
 
-## AI Provider Notes
-### Ollama
-- Local runtime default: `http://localhost:11434/v1`
-- Docker runtime default: `http://host.docker.internal:11434/v1`
-- You can enter `http://localhost:11434` or `http://localhost:11434/v1`; the server normalizes it.
-- The settings test endpoint reports available models and whether the selected model is local or cloud-backed when Ollama exposes that metadata.
+1. **AI Sağlayıcı Seç:** Ollama, Gemini, OpenAI, Groq, DeepSeek veya Custom
+2. **API Key Gir:** Seçtiğin sağlayıcının key'ini yapıştır
+3. **Model Seç:** İstediğin modeli yaz (örn. `gemini-2.0-flash`, `llama3.1`)
+4. **Bağlantıyı Test Et:** "Test" butonuna bas, bağlantı çalışıyorsa ✅ göreceksin
 
-### Cloud providers
-- Gemini, OpenAI, Groq, DeepSeek, and Custom profiles are stored separately.
-- Provider test results are kept per profile.
-- There is no silent fallback between providers.
+---
 
-## Strict Source Mode
-- Chat requires at least one indexed document.
-- Quiz and flashcards also require indexed documents.
-- If the requested answer is not present in the uploaded material, the app returns an out-of-scope response instead of using outside knowledge.
+## 🔑 Ücretsiz API Key Rehberi
 
-## Settings Storage
-Settings are stored in `data/config.json` with per-provider profiles:
-- `activeProvider`
-- `profiles.<provider>.apiKey`
-- `profiles.<provider>.model`
-- `profiles.<provider>.baseUrl`
-- `profiles.<provider>.lastTest`
+| Sağlayıcı | Ücretsiz mi? | Key Alma Linki |
+|-----------|:------------:|----------------|
+| **Ollama** | ✅ Tamamen ücretsiz (lokal) | [ollama.com](https://ollama.com/) |
+| **Gemini** | ✅ Ücretsiz kullanım mevcut | [aistudio.google.com](https://aistudio.google.com/apikey) |
+| **Groq** | ✅ Ücretsiz tier mevcut | [console.groq.com](https://console.groq.com/keys) |
+| **OpenAI** | ❌ Ücretli | [platform.openai.com](https://platform.openai.com/api-keys) |
+| **DeepSeek** | ✅ Çok ucuz | [platform.deepseek.com](https://platform.deepseek.com/api_keys) |
 
-## Docker Compose
-The included `docker-compose.yml` exposes the app on port `3030` and wires `host.docker.internal` for host Ollama access.
+---
 
-## Development Notes
-- Runtime data is stored under `data/`
-- Uploaded temp files are cleaned after processing
-- Session files are stored under `data/sessions/`
-- Runtime logs `server.out.log` and `server.err.log` are ignored
+## 📖 Nasıl Kullanılır?
+
+1. **Doküman Yükle:** Ana sayfada 📎 butonuna tıkla → PDF, TXT, MD veya resim yükle
+2. **Soru Sor:** Yüklediğin doküman hakkında sohbet alanından soru sor
+3. **Quiz Oluştur:** Quiz sekmesine geç → Otomatik quiz oluşturulur
+4. **Flashcard Çalış:** Flashcard sekmesine geç → Kartları çevirip çalış
+5. **Pomodoro Kullan:** Zamanlayıcıyı başlat ve odaklan
+
+---
+
+## 🔧 Sorun Giderme
+
+| Sorun | Çözüm |
+|-------|-------|
+| `npm install` hata veriyor | Node.js v18+ kurulu mu kontrol et: `node --version` |
+| Port 3030 kullanımda | `.env` dosyasında `PORT=3031` yaz |
+| API key çalışmıyor | Ayarlarda doğru sağlayıcıyı seçtiğinden emin ol |
+| Docker başlamıyor | Docker Desktop açık mı kontrol et |
+| Ollama bağlanmıyor | Ollama'nın çalıştığından emin ol: `ollama list` |
+| Sayfa açılmıyor | `http://localhost:3030` adresini kontrol et |
+
+---
+
+## 📁 Proje Yapısı
+
+```
+study_app/
+├── public/            # Frontend dosyaları (HTML, CSS, JS)
+├── data/              # Çalışma zamanı verileri ve oturum dosyaları
+├── uploads/           # Geçici yükleme klasörü
+├── server.js          # Ana sunucu dosyası
+├── package.json       # Node.js bağımlılıkları
+├── docker-compose.yml # Docker yapılandırması
+├── Dockerfile         # Docker image tanımı
+├── start.bat          # Windows hızlı başlatma scripti
+├── .env.example       # Ortam değişkenleri şablonu
+└── system-prompt.md   # AI sistem talimatları
+```
+
+---
+
+## 🔒 Güvenlik Notları
+
+- `.env` dosyasını **kimseyle paylaşma**, API key'lerin içinde.
+- `data/config.json` dosyası da yerel ayarlarını içerir — commit'leme.
+- `.gitignore` dosyası bu hassas dosyaları otomatik olarak yok sayar.
+- API key'lerini başkalarıyla paylaştıysan, hemen yenile (rotate et).
+
+---
+
+## 🤝 Katkıda Bulunma
+
+1. Repoyu fork'la
+2. Yeni bir branch oluştur: `git checkout -b yeni-ozellik`
+3. Değişikliklerini commit'le: `git commit -m "Yeni özellik eklendi"`
+4. Push et: `git push origin yeni-ozellik`
+5. Pull Request aç
+
+---
+
+## 📋 Ortam Değişkenleri Referansı
+
+| Değişken | Varsayılan | Açıklama |
+|----------|-----------|----------|
+| `PORT` | `3030` | Sunucu portu |
+| `HOST` | `127.0.0.1` | Bağlanma adresi |
+| `AI_PROVIDER` | `ollama` | Varsayılan AI sağlayıcı |
+| `OLLAMA_BASE_URL` | `http://localhost:11434/v1` | Ollama API adresi |
+| `OLLAMA_MODEL` | `llama3.1` | Ollama modeli |
+| `GEMINI_API_KEY` | — | Google Gemini API anahtarı |
+| `GEMINI_MODEL` | `gemini-2.0-flash` | Gemini modeli |
+| `OPENAI_API_KEY` | — | OpenAI API anahtarı |
+| `GROQ_API_KEY` | — | Groq API anahtarı |
+| `DEEPSEEK_API_KEY` | — | DeepSeek API anahtarı |
+
+---
+
+## 🖼️ Ekran Görüntüleri Ekleme
+
+Projeye kendi ekran görüntülerinizi eklemek isterseniz:
+1. `public/assets` klasörü oluşturun.
+2. Ekran görüntülerinizi `screenshot1.png` ve `screenshot2.png` olarak kaydedin.
+3. README'deki görseller otomatik olarak güncellenecektir.
+
+---
+
+## 📝 Lisans
+
+Bu proje [LICENSE](LICENSE) dosyasında belirtilen lisans altında dağıtılmaktadır.
+
+---
+
+<p align="center">
+  <b>OmniTutor v3</b> ile iyi çalışmalar! 🚀📚
+</p>
