@@ -1,0 +1,11 @@
+node_modules/
+uploads/
+.env
+data/
+!data/.gitkeep
+server.out.log
+server.err.log
+.comments/
+tmp-smoke/
+perf-doc.txt
+smoke-doc.txt

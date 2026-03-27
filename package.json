@@ -1,0 +1,20 @@
+{
+  "name": "omnitutor-v3",
+  "version": "3.0.0",
+  "description": "Document-grounded AI study workspace with multi-provider support",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.24.0",
+    "adm-zip": "^0.5.16",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "multer": "^1.4.5-lts.2",
+    "openai": "^6.33.0",
+    "pdf-parse": "^1.1.1",
+    "uuid": "^11.1.0"
+  }
+}
