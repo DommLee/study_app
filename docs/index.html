@@ -103,14 +103,22 @@
       font-weight: 600;
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 8px;
       text-decoration: none;
+      min-height: 44px;
     }
 
     .button.primary {
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
       border-color: transparent;
       box-shadow: 0 14px 28px rgba(109,134,255,.28);
+    }
+
+    .button.ok {
+      background: linear-gradient(135deg, #2aa773, #38c98a);
+      border-color: transparent;
+      box-shadow: 0 14px 28px rgba(56,201,138,.2);
     }
 
     main section { padding: 72px 0; }
@@ -151,6 +159,11 @@
     }
 
     .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-note {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: .95rem;
+    }
 
     .hero-card,
     .card {
@@ -301,7 +314,7 @@
         <a href="#workflow">Workflow</a>
         <a href="#creator">Creator</a>
         <a href="https://github.com/DommLee/study_app">GitHub Repo</a>
-        <a class="button primary" href="https://github.com/DommLee/study_app">Open Project</a>
+        <a class="button ok" href="http://localhost:3030" target="_blank" rel="noreferrer">Open Local App</a>
       </nav>
     </div>
   </header>
@@ -314,9 +327,11 @@
           <h2>Grounded AI study that actually follows your sources.</h2>
           <p>OmniTutor v3 combines source-aware chat, selected-page study, teacher question packs, quizzes, flashcards, recovery review, and multi-provider AI in one workspace. Upload your own PDFs, PowerPoints, DOCX notes, or question sheets and keep the learning loop anchored to the material you chose.</p>
           <div class="hero-actions">
+            <a class="button ok" href="http://localhost:3030" target="_blank" rel="noreferrer">Open Local App</a>
             <a class="button primary" href="https://github.com/DommLee/study_app">Clone on GitHub</a>
-            <a class="button" href="#run">Run locally</a>
+            <a class="button" href="#run">Setup Guide</a>
           </div>
+          <div class="hero-note">The full app opens when OmniTutor is already running locally on your machine at <code>http://localhost:3030</code>.</div>
         </div>
         <div class="hero-card">
           <img src="assets/hero.svg" alt="OmniTutor v3 workspace preview">
@@ -403,7 +418,7 @@
             <li>This Pages site is a static showcase and setup guide.</li>
             <li>The full OmniTutor app requires the Node backend for uploads, OCR, indexing, question extraction, and AI routing.</li>
             <li>GitHub Pages can host the public project site, but not the full backend app.</li>
-            <li>A GitHub Actions workflow is included to publish the static <code>docs/</code> site.</li>
+            <li>The <strong>Open Local App</strong> button works when OmniTutor is already running locally.</li>
           </ul>
         </div>
       </div>
