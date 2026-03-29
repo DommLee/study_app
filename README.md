@@ -6,6 +6,11 @@ OmniTutor is built to stay source-aware. The app reads your uploaded material fi
 
 ![OmniTutor Hero](docs/assets/hero.svg)
 
+## Live site
+
+- Static project site: [https://dommlee.github.io/study_app/](https://dommlee.github.io/study_app/)
+- If the site is not live yet, enable `Settings > Pages > GitHub Actions` in the repository and rerun the Pages workflow.
+
 ## What it does
 
 - Document-grounded chat from your uploaded files
