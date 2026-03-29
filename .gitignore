@@ -9,3 +9,5 @@ server.err.log
 tmp-smoke/
 perf-doc.txt
 smoke-doc.txt
+ocr-test.png
+*.traineddata

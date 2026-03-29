@@ -39,6 +39,120 @@
 
   const workInput = document.getElementById("pomoDurationWork");
   const breakInput = document.getElementById("pomoDurationBreak");
+  const widget = document.getElementById("pomoWidget");
+  const widgetHandle = document.getElementById("pomoWidgetHandle");
+  const widgetDockBtn = document.getElementById("pomoWidgetDock");
+  const WIDGET_POS_KEY = "omnitutor-pomo-widget-pos";
+
+  function clampWidgetPosition(left, top) {
+    if (!widget) return { left, top };
+    const margin = 12;
+    const rect = widget.getBoundingClientRect();
+    const maxLeft = Math.max(margin, window.innerWidth - rect.width - margin);
+    const maxTop = Math.max(margin, window.innerHeight - rect.height - margin);
+    return {
+      left: Math.min(maxLeft, Math.max(margin, left)),
+      top: Math.min(maxTop, Math.max(margin, top)),
+    };
+  }
+
+  function saveWidgetPosition(left, top) {
+    try {
+      localStorage.setItem(WIDGET_POS_KEY, JSON.stringify({ left, top }));
+    } catch {
+      // Ignore storage failures.
+    }
+  }
+
+  function resetWidgetPosition() {
+    if (!widget) return;
+    widget.style.left = "";
+    widget.style.top = "";
+    widget.style.right = "24px";
+    widget.style.bottom = "24px";
+    try {
+      localStorage.removeItem(WIDGET_POS_KEY);
+    } catch {
+      // Ignore storage failures.
+    }
+  }
+
+  function applySavedWidgetPosition() {
+    if (!widget) return;
+    try {
+      const parsed = JSON.parse(localStorage.getItem(WIDGET_POS_KEY) || "null");
+      if (!parsed || typeof parsed.left !== "number" || typeof parsed.top !== "number") {
+        return;
+      }
+      const next = clampWidgetPosition(parsed.left, parsed.top);
+      widget.style.left = `${next.left}px`;
+      widget.style.top = `${next.top}px`;
+      widget.style.right = "auto";
+      widget.style.bottom = "auto";
+    } catch {
+      // Ignore malformed positions.
+    }
+  }
+
+  function bindWidgetDragging() {
+    if (!widget || !widgetHandle) return;
+
+    let dragging = false;
+    let pointerId = null;
+    let offsetX = 0;
+    let offsetY = 0;
+
+    const stopDrag = () => {
+      if (!dragging) return;
+      dragging = false;
+      widget.classList.remove("dragging");
+      try {
+        widgetHandle.releasePointerCapture(pointerId);
+      } catch {}
+      pointerId = null;
+      const rect = widget.getBoundingClientRect();
+      saveWidgetPosition(rect.left, rect.top);
+    };
+
+    widgetHandle.addEventListener("pointerdown", (event) => {
+      if (event.target === widgetDockBtn) return;
+      dragging = true;
+      pointerId = event.pointerId;
+      const rect = widget.getBoundingClientRect();
+      offsetX = event.clientX - rect.left;
+      offsetY = event.clientY - rect.top;
+      widget.style.left = `${rect.left}px`;
+      widget.style.top = `${rect.top}px`;
+      widget.style.right = "auto";
+      widget.style.bottom = "auto";
+      widget.classList.add("dragging");
+      widgetHandle.setPointerCapture(event.pointerId);
+      event.preventDefault();
+    });
+
+    widgetHandle.addEventListener("pointermove", (event) => {
+      if (!dragging) return;
+      const next = clampWidgetPosition(event.clientX - offsetX, event.clientY - offsetY);
+      widget.style.left = `${next.left}px`;
+      widget.style.top = `${next.top}px`;
+    });
+
+    widgetHandle.addEventListener("pointerup", stopDrag);
+    widgetHandle.addEventListener("pointercancel", stopDrag);
+    widgetHandle.addEventListener("dblclick", resetWidgetPosition);
+    widgetDockBtn?.addEventListener("click", resetWidgetPosition);
+
+    window.addEventListener("resize", () => {
+      if (!widget.style.left || !widget.style.top) return;
+      const current = clampWidgetPosition(
+        Number.parseFloat(widget.style.left || "0"),
+        Number.parseFloat(widget.style.top || "0")
+      );
+      widget.style.left = `${current.left}px`;
+      widget.style.top = `${current.top}px`;
+      saveWidgetPosition(current.left, current.top);
+    });
+  }
 
   function formatTime(totalSeconds) {
     const minutes = Math.floor(totalSeconds / 60).toString().padStart(2, "0");
@@ -194,5 +308,7 @@
   }
 
   render();
+  applySavedWidgetPosition();
+  bindWidgetDragging();
   window.pomoModule = { reset, startStop };
 })();

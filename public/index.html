@@ -13,38 +13,136 @@
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --bg-primary: #0a0a0f;
-      --bg-secondary: #12121a;
-      --bg-tertiary: #1a1a26;
-      --bg-card: #16161f;
-      --bg-hover: #1e1e2a;
-      --text-primary: #e8e8ed;
-      --text-secondary: #9898a8;
-      --text-muted: #5a5a6e;
-      --accent: #6c5ce7;
-      --accent-light: #a29bfe;
-      --accent-glow: rgba(108, 92, 231, 0.25);
-      --green: #00b894;
-      --green-glow: rgba(0, 184, 148, 0.2);
-      --orange: #f39c12;
-      --red: #e74c3c;
-      --border: rgba(255, 255, 255, 0.06);
-      --border-active: rgba(108, 92, 231, 0.4);
-      --radius: 16px;
-      --radius-sm: 10px;
-      --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      --ui-font-scale: 1;
+      --reading-font-scale: 1;
+      --bg-primary: #08111f;
+      --bg-secondary: rgba(13, 23, 40, 0.9);
+      --bg-tertiary: rgba(22, 34, 55, 0.9);
+      --bg-card: rgba(17, 26, 43, 0.88);
+      --bg-hover: rgba(31, 48, 76, 0.96);
+      --text-primary: #edf4ff;
+      --text-secondary: #a7b7d6;
+      --text-muted: #7083a4;
+      --accent: #4f7cff;
+      --accent-strong: #355cff;
+      --accent-light: #82d8ff;
+      --accent-glow: rgba(79, 124, 255, 0.24);
+      --green: #12b886;
+      --green-glow: rgba(18, 184, 134, 0.2);
+      --orange: #ffb648;
+      --red: #ff6b6b;
+      --border: rgba(190, 206, 233, 0.12);
+      --border-strong: rgba(190, 206, 233, 0.22);
+      --border-active: rgba(79, 124, 255, 0.45);
+      --panel-glow: radial-gradient(circle at top, rgba(79, 124, 255, 0.16), transparent 52%);
+      --hero-bg: linear-gradient(180deg, rgba(255,255,255,0.02), transparent 80%);
+      --radius: 18px;
+      --radius-sm: 12px;
+      --shadow: 0 18px 48px rgba(1, 10, 24, 0.42);
       --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      color-scheme: dark;
+    }
+
+    body[data-theme="light"] {
+      --bg-primary: #f3f7fd;
+      --bg-secondary: rgba(255, 255, 255, 0.86);
+      --bg-tertiary: rgba(240, 244, 252, 0.95);
+      --bg-card: rgba(255, 255, 255, 0.9);
+      --bg-hover: rgba(228, 236, 249, 0.98);
+      --text-primary: #172033;
+      --text-secondary: #53627d;
+      --text-muted: #74839d;
+      --accent: #305cfb;
+      --accent-strong: #2147d8;
+      --accent-light: #0ea5e9;
+      --accent-glow: rgba(48, 92, 251, 0.18);
+      --green: #0f9f6e;
+      --green-glow: rgba(15, 159, 110, 0.18);
+      --orange: #c98a11;
+      --red: #d9485f;
+      --border: rgba(23, 32, 51, 0.1);
+      --border-strong: rgba(23, 32, 51, 0.18);
+      --border-active: rgba(48, 92, 251, 0.34);
+      --panel-glow: radial-gradient(circle at top, rgba(48, 92, 251, 0.12), transparent 50%);
+      --hero-bg: linear-gradient(180deg, rgba(48, 92, 251, 0.04), transparent 80%);
+      --shadow: 0 18px 42px rgba(69, 92, 140, 0.14);
+      color-scheme: light;
+    }
+
+    body[data-theme="study"] {
+      --bg-primary: #141118;
+      --bg-secondary: rgba(31, 24, 31, 0.92);
+      --bg-tertiary: rgba(46, 36, 43, 0.94);
+      --bg-card: rgba(36, 28, 35, 0.9);
+      --bg-hover: rgba(58, 44, 55, 0.98);
+      --text-primary: #f7f0e6;
+      --text-secondary: #c8b9a7;
+      --text-muted: #8f7f70;
+      --accent: #d97757;
+      --accent-strong: #c55d3f;
+      --accent-light: #f0be7a;
+      --accent-glow: rgba(217, 119, 87, 0.22);
+      --green: #72b788;
+      --orange: #e2a74a;
+      --red: #ef6a5b;
+      --border: rgba(247, 240, 230, 0.11);
+      --border-strong: rgba(247, 240, 230, 0.2);
+      --border-active: rgba(217, 119, 87, 0.34);
+      --panel-glow: radial-gradient(circle at top, rgba(217, 119, 87, 0.12), transparent 55%);
+      --hero-bg: linear-gradient(180deg, rgba(240, 190, 122, 0.03), transparent 80%);
+      color-scheme: dark;
+    }
+
+    body[data-font-scale="small"] {
+      --ui-font-scale: 0.93;
+      --reading-font-scale: 0.94;
+    }
+
+    body[data-font-scale="normal"] {
+      --ui-font-scale: 1;
+      --reading-font-scale: 1;
+    }
+
+    body[data-font-scale="large"] {
+      --ui-font-scale: 1.08;
+      --reading-font-scale: 1.12;
+    }
+
+    body[data-font-scale="xlarge"] {
+      --ui-font-scale: 1.16;
+      --reading-font-scale: 1.24;
     }
 
     body {
       font-family: "Inter", -apple-system, system-ui, sans-serif;
-      background: var(--bg-primary);
+      background:
+        radial-gradient(circle at top left, rgba(79, 124, 255, 0.09), transparent 22%),
+        radial-gradient(circle at bottom right, rgba(130, 216, 255, 0.08), transparent 24%),
+        var(--bg-primary);
       color: var(--text-primary);
       height: 100vh;
       width: 100vw;
       display: flex;
       flex-direction: column;
       overflow: hidden;
+      transition: background var(--transition), color var(--transition);
+    }
+
+    body,
+    input,
+    textarea,
+    select,
+    button {
+      font-size: calc(16px * var(--ui-font-scale));
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: var(--hero-bg);
+      z-index: 0;
     }
 
     .app-container {
@@ -53,6 +151,8 @@
       height: 100%;
       width: 100%;
       overflow: hidden;
+      position: relative;
+      z-index: 1;
     }
 
     /* --- Header --- */
@@ -61,10 +161,12 @@
       align-items: center;
       justify-content: space-between;
       padding: 12px 24px;
-      background: var(--bg-secondary);
+      background: color-mix(in srgb, var(--bg-secondary) 92%, transparent);
       border-bottom: 1px solid var(--border);
       flex-shrink: 0;
       z-index: 100;
+      backdrop-filter: blur(18px);
+      box-shadow: 0 12px 32px rgba(4, 10, 24, 0.16);
     }
 
     .header-left {
@@ -86,7 +188,7 @@
     }
 
     .brand h1 {
-      font-size: 18px;
+      font-size: calc(18px * var(--ui-font-scale));
       font-weight: 700;
       letter-spacing: -0.3px;
       background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
@@ -96,7 +198,7 @@
     }
 
     .brand p {
-      font-size: 11px;
+      font-size: calc(11px * var(--ui-font-scale));
       color: var(--text-muted);
       font-weight: 500;
       text-transform: uppercase;
@@ -106,7 +208,515 @@
     .header-right {
       display: flex;
       align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
       gap: 8px;
+      flex-wrap: wrap;
+    }
+    .quick-settings-trigger {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 38px;
+      padding: 7px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--bg-tertiary) 88%, transparent);
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: var(--transition);
+      font: inherit;
+    }
+    .quick-settings-trigger:hover {
+      border-color: var(--border-active);
+      background: var(--bg-hover);
+    }
+    .quick-settings-trigger strong {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+    .quick-settings-trigger small {
+      color: var(--text-muted);
+      font-size: 11px;
+    }
+    .quick-drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 10, 20, 0.38);
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      pointer-events: none;
+      transition: var(--transition);
+      z-index: 130;
+    }
+    .quick-drawer-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .quick-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: min(360px, 92vw);
+      height: 100vh;
+      padding: 18px;
+      background: color-mix(in srgb, var(--bg-secondary) 92%, transparent);
+      border-left: 1px solid var(--border);
+      box-shadow: -24px 0 48px rgba(0, 0, 0, 0.25);
+      transform: translateX(104%);
+      transition: transform var(--transition);
+      z-index: 140;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      backdrop-filter: blur(18px);
+    }
+    .quick-drawer.open { transform: translateX(0); }
+    .quick-drawer-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .quick-drawer-header h3 {
+      font-size: 18px;
+      margin-bottom: 4px;
+    }
+    .quick-drawer-header p {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .quick-settings-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .quick-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: color-mix(in srgb, var(--bg-tertiary) 88%, transparent);
+    }
+    .quick-field label {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.9px;
+    }
+    .quick-field select {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      font: inherit;
+      padding: 9px 10px;
+      outline: none;
+    }
+    .quick-field select:focus { border-color: var(--border-active); }
+    .quick-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: color-mix(in srgb, var(--bg-tertiary) 88%, transparent);
+    }
+    .quick-toggle strong {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+    .quick-toggle small {
+      display: block;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+    .quick-toggle input {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--accent);
+      flex-shrink: 0;
+    }
+    .quick-drawer-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: auto;
+      padding-top: 6px;
+    }
+    .surface-guide,
+    .source-pack-card,
+    .status-strip {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: color-mix(in srgb, var(--bg-tertiary) 86%, transparent);
+      padding: 12px;
+    }
+    .surface-guide h4,
+    .source-pack-card h4 {
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+    .surface-guide p,
+    .source-pack-summary,
+    .status-strip {
+      color: var(--text-secondary);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+    .surface-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .surface-step {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px 12px;
+      background: rgba(255,255,255,0.02);
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+    .surface-step strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 11px;
+      color: var(--accent-light);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+    .source-pack-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+    .source-pack-head-main {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 0;
+    }
+    .source-pack-head small {
+      color: var(--text-muted);
+      font-size: 11px;
+    }
+    .source-pack-toggle {
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--bg-tertiary);
+      color: var(--text-secondary);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: var(--transition);
+    }
+    .source-pack-toggle:hover {
+      border-color: var(--border-active);
+      background: var(--bg-hover);
+      color: var(--text-primary);
+    }
+    .source-pack-body {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .source-pack-card.collapsed .source-pack-body {
+      display: none;
+    }
+    .source-pack-card.collapsed {
+      display: none;
+    }
+    .source-pack-card.collapsed .source-pack-head {
+      margin-bottom: 0;
+      min-height: 24px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 8px;
+    }
+    .source-pack-card.collapsed .source-pack-head-main {
+      flex-direction: column;
+      align-items: center;
+      align-items: flex-start;
+      gap: 0;
+      min-width: 0;
+      flex: 1;
+    }
+    .source-pack-card.collapsed h4 {
+      display: none;
+    }
+    .source-pack-card.collapsed .source-pack-head small {
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+    .source-pack-card.collapsed .source-pack-toggle {
+      min-height: 24px;
+      padding: 0 10px;
+      font-size: 10px;
+      background: rgba(255,255,255,0.04);
+    }
+    .source-chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .source-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      color: var(--text-secondary);
+      font-size: 11px;
+      line-height: 1.3;
+    }
+    .source-chip strong {
+      color: var(--text-primary);
+      font-size: 11px;
+    }
+    .source-chip.confidence-high { color: #55efc4; border-color: rgba(85,239,196,0.24); }
+    .source-chip.confidence-medium { color: #ffeaa7; border-color: rgba(255,234,167,0.24); }
+    .source-chip.confidence-low { color: #ff9f43; border-color: rgba(255,159,67,0.24); }
+    .source-chip.muted {
+      color: var(--text-muted);
+      background: transparent;
+      border-style: dashed;
+    }
+    .study-visible-pages {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .study-page-chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 34px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--bg-tertiary);
+      color: var(--text-secondary);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      font-family: inherit;
+    }
+    .study-page-chip:hover {
+      border-color: var(--border-active);
+      background: var(--bg-hover);
+      color: var(--text-primary);
+    }
+    .study-page-chip.active {
+      border-color: transparent;
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: #fff;
+    }
+    .study-page-chip.ghost {
+      cursor: default;
+      background: transparent;
+      border-style: dashed;
+      color: var(--text-muted);
+    }
+    .study-page-chip-group {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding-right: 4px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--bg-tertiary);
+    }
+    .study-page-chip-group .study-page-chip {
+      border: none;
+      background: transparent;
+      min-height: 32px;
+      padding-right: 6px;
+    }
+    .study-page-chip-group .study-page-chip:hover {
+      background: transparent;
+    }
+    .study-page-chip-remove {
+      width: 24px;
+      height: 24px;
+      border: none;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      color: var(--text-muted);
+      font: inherit;
+      font-size: 14px;
+      line-height: 1;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .study-page-chip-remove:hover {
+      background: rgba(255, 107, 107, 0.18);
+      color: #fff;
+    }
+    .study-page-chip-group.active {
+      border-color: transparent;
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+    }
+    .study-page-chip-group.active .study-page-chip,
+    .study-page-chip-group.active .study-page-chip-remove {
+      color: #fff;
+    }
+    .study-page-chip-group.active .study-page-chip-remove {
+      background: rgba(255,255,255,0.14);
+    }
+    .study-scope-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .study-scope-actions button {
+      padding: 8px 12px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--bg-tertiary);
+      color: var(--text-secondary);
+      font-size: 12px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .study-scope-actions button:hover {
+      border-color: var(--border-active);
+      background: var(--bg-hover);
+      color: var(--text-primary);
+    }
+    .study-scope-actions button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    body[data-theme="light"] .study-page-chip,
+    body[data-theme="light"] .study-scope-actions button {
+      background: rgba(243,247,253,0.78);
+    }
+    .secondary-tools {
+      margin-top: 12px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: color-mix(in srgb, var(--bg-tertiary) 84%, transparent);
+      overflow: hidden;
+    }
+    .secondary-tools summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .secondary-tools summary::-webkit-details-marker { display: none; }
+    .secondary-tools summary small {
+      color: var(--text-muted);
+      font-weight: 400;
+      font-size: 11px;
+    }
+    .secondary-tools-body {
+      padding: 0 14px 14px;
+    }
+    .study-scope-quick {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+    .scope-chip {
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-secondary);
+      font: inherit;
+      font-size: 12px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .scope-chip:hover,
+    .scope-chip.active {
+      border-color: var(--border-active);
+      background: rgba(79, 124, 255, 0.08);
+      color: var(--accent-light);
+    }
+    .teacher-bottom-bar {
+      position: sticky;
+      bottom: 0;
+      z-index: 4;
+      margin: 12px -18px -18px;
+      padding: 12px 18px 18px;
+      border-top: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(8,17,31,0), color-mix(in srgb, var(--bg-card) 96%, transparent) 22%);
+      backdrop-filter: blur(12px);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .teacher-bottom-bar .teacher-action-row,
+    .teacher-bottom-bar .teacher-nav-row {
+      margin: 0;
+    }
+    .quiz-preview-card,
+    .flash-preview-card {
+      margin: 12px 0;
+    }
+    .status-line {
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      min-height: 18px;
+    }
+    .simple-mode .advanced-only {
+      display: none !important;
+    }
+    body[data-theme="light"] .quick-settings-trigger,
+    body[data-theme="light"] .quick-field,
+    body[data-theme="light"] .quick-toggle,
+    body[data-theme="light"] .surface-guide,
+    body[data-theme="light"] .source-pack-card,
+    body[data-theme="light"] .secondary-tools,
+    body[data-theme="light"] .status-strip {
+      box-shadow: none;
+      background: rgba(255,255,255,0.94);
+    }
+    body[data-theme="light"] .source-chip {
+      background: rgba(243,247,253,0.78);
     }
     .lang-switch {
       display: flex;
@@ -115,9 +725,10 @@
       padding: 6px 10px;
       border: 1px solid var(--border);
       border-radius: 999px;
-      background: var(--bg-tertiary);
+      background: color-mix(in srgb, var(--bg-tertiary) 86%, transparent);
       color: var(--text-secondary);
       font-size: 12px;
+      backdrop-filter: blur(10px);
     }
     .lang-switch label {
       color: var(--text-muted);
@@ -144,7 +755,7 @@
       align-items: center;
       gap: 6px;
       padding: 6px 12px;
-      background: var(--bg-tertiary);
+      background: color-mix(in srgb, var(--bg-tertiary) 86%, transparent);
       border-radius: 20px;
       font-size: 12px;
       color: var(--text-secondary);
@@ -170,7 +781,7 @@
       height: 36px;
       border: 1px solid var(--border);
       border-radius: var(--radius-sm);
-      background: var(--bg-tertiary);
+      background: color-mix(in srgb, var(--bg-tertiary) 88%, transparent);
       color: var(--text-secondary);
       display: flex;
       align-items: center;
@@ -184,6 +795,14 @@
       background: var(--bg-hover);
       border-color: var(--border-active);
       color: var(--accent-light);
+    }
+
+    .theme-switch {
+      min-width: 144px;
+    }
+
+    .theme-switch label {
+      min-width: 40px;
     }
 
     /* --- Main Layout --- */
@@ -450,7 +1069,7 @@
     .message-content {
       padding: 14px 18px;
       border-radius: var(--radius);
-      font-size: 14px;
+      font-size: calc(14px * var(--reading-font-scale));
       line-height: 1.7;
       position: relative;
     }
@@ -463,7 +1082,7 @@
     }
 
     .message.user .message-content {
-      background: linear-gradient(135deg, var(--accent), #5a4bd1);
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
       border-top-right-radius: 4px;
       color: #fff;
     }
@@ -473,9 +1092,9 @@
       margin: 16px 0 8px;
       font-weight: 700;
     }
-    .message-content h1 { font-size: 18px; }
-    .message-content h2 { font-size: 16px; }
-    .message-content h3 { font-size: 14px; }
+    .message-content h1 { font-size: calc(18px * var(--reading-font-scale)); }
+    .message-content h2 { font-size: calc(16px * var(--reading-font-scale)); }
+    .message-content h3 { font-size: calc(14px * var(--reading-font-scale)); }
 
     .message-content p { margin: 6px 0; }
 
@@ -717,7 +1336,7 @@
     .send-btn {
       width: 48px;
       height: 48px;
-      background: linear-gradient(135deg, var(--accent), #5a4bd1);
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
       border: none;
       border-radius: var(--radius);
       color: #fff;
@@ -874,6 +1493,80 @@
       .input-area { padding: 12px 16px; }
       .feature-cards { grid-template-columns: 1fr; }
       .message { max-width: 95%; }
+    }
+    @media (max-width: 1100px) {
+      .header {
+        flex-wrap: wrap;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      .header-right {
+        width: 100%;
+        justify-content: space-between;
+      }
+      .quick-settings-trigger {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+      }
+    }
+    @media (max-width: 720px) {
+      .header {
+        padding: 10px 12px;
+      }
+      .brand p {
+        display: none;
+      }
+      .theme-switch {
+        display: none;
+      }
+      .header-right {
+        gap: 8px;
+        flex-wrap: wrap;
+        align-items: stretch;
+      }
+      .quick-settings-trigger {
+        min-height: 36px;
+        width: 100%;
+        order: 10;
+      }
+      .quick-settings-trigger small {
+        display: none;
+      }
+      .quick-settings-trigger strong {
+        font-size: 13px;
+      }
+      .lang-switch {
+        flex: 1 1 140px;
+        min-width: 0;
+      }
+      .session-badge {
+        order: 9;
+      }
+      .source-pack-card {
+        padding: 10px;
+      }
+      .source-pack-card.collapsed {
+        padding-top: 0;
+      }
+      .pdf-scroll {
+        padding-top: 4px;
+      }
+      .modal {
+        width: min(96vw, 520px);
+      }
+      .modal-header,
+      .modal-body,
+      .modal-footer {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+      .modal-footer {
+        flex-wrap: wrap;
+      }
+      .modal-footer .btn {
+        flex: 1 1 140px;
+      }
     }
 
     /* --- Notification Toast --- */
@@ -1149,7 +1842,7 @@
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--accent), #5a4bd1);
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
       color: #fff;
       border: none;
     }
@@ -1218,8 +1911,15 @@
       transition: var(--transition);
       font-family: inherit;
     }
-    .nav-tab:hover { color: var(--text-secondary); }
-    .nav-tab.active { color: var(--accent-light); border-bottom-color: var(--accent); }
+    .nav-tab:hover {
+      color: var(--text-secondary);
+      background: rgba(255, 255, 255, 0.02);
+    }
+    .nav-tab.active {
+      color: var(--accent-light);
+      border-bottom-color: var(--accent);
+      background: rgba(255, 255, 255, 0.02);
+    }
 
     /* === PANELS === */
     .panel { display: none; flex: 1 1 0; overflow: hidden; min-height: 0; width: 100%; height: 100%; }
@@ -1238,8 +1938,58 @@
       box-shadow: var(--shadow);
       z-index: 300;
       display: none;
+      touch-action: none;
     }
     .pomo-widget.visible { display: block; }
+    .pomo-widget.dragging { box-shadow: 0 18px 42px rgba(0,0,0,0.34); }
+    .pomo-widget-handle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 6px;
+      cursor: grab;
+      user-select: none;
+    }
+    .pomo-widget.dragging .pomo-widget-handle { cursor: grabbing; }
+    .pomo-widget-title {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+    }
+    .pomo-widget-grip {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 3px;
+      opacity: 0.75;
+      flex-shrink: 0;
+    }
+    .pomo-widget-grip span {
+      width: 14px;
+      height: 2px;
+      border-radius: 999px;
+      background: currentColor;
+      color: var(--text-muted);
+    }
+    .pomo-widget-mini {
+      min-width: 30px;
+      height: 30px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--bg-tertiary);
+      color: var(--text-secondary);
+      cursor: pointer;
+      font: inherit;
+      font-size: 12px;
+      transition: var(--transition);
+      flex-shrink: 0;
+    }
+    .pomo-widget-mini:hover {
+      border-color: var(--border-active);
+      background: var(--bg-hover);
+      color: var(--text-primary);
+    }
     .pomo-ring-wrap { display: flex; justify-content: center; margin: 8px 0; }
     .pomo-ring { transform: rotate(-90deg); }
     .pomo-ring-bg { fill: none; stroke: var(--bg-tertiary); stroke-width: 6; }
@@ -1266,7 +2016,7 @@
       cursor: pointer; font-family: inherit; transition: var(--transition);
     }
     .pomo-btns button:hover { background: var(--bg-hover); color: var(--text-primary); }
-    #pomoStart { background: linear-gradient(135deg, var(--accent), #5a4bd1); color: #fff; border: none; }
+    #pomoStart { background: linear-gradient(135deg, var(--accent), var(--accent-strong)); color: #fff; border: none; }
 
     /* === STUDY MODE === */
     .study-layout { display: flex; flex: 1 1 0; overflow: hidden; min-height: 0; height: 100%; }
@@ -1274,7 +2024,7 @@
       flex: 1; display: flex; flex-direction: column; border-right: 1px solid var(--border); overflow: hidden;
     }
     .study-ai-pane {
-      width: 520px; min-width: 400px; max-width: 780px; flex-shrink: 0; display: flex; flex-direction: column;
+      width: 680px; min-width: 460px; max-width: 1100px; flex-shrink: 0; display: flex; flex-direction: column; position: relative; overflow: hidden;
     }
     .study-resizer {
       width: 8px; cursor: col-resize; flex-shrink: 0; position: relative;
@@ -1304,13 +2054,128 @@
       padding: 6px 10px; border: 1px solid var(--border); border-radius: 6px;
       background: var(--bg-tertiary); color: var(--text-muted); font-size: 12px; min-width: 64px; text-align: center;
     }
+    .study-page-select {
+      display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+      padding: 10px 16px; border-bottom: 1px solid var(--border); background: rgba(255,255,255,0.015);
+    }
+    .study-page-select label {
+      font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;
+    }
+    .study-page-select select,
+    .study-page-select input {
+      padding: 7px 10px; font-size: 12px; border: 1px solid var(--border);
+      border-radius: 10px; background: var(--bg-tertiary); color: var(--text-primary);
+      font-family: inherit; outline: none;
+    }
+    .study-page-select input { min-width: 180px; }
+    #studyApplyPageSelection {
+      padding: 8px 12px;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: #fff;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 8px 18px var(--accent-glow);
+    }
+    #studyApplyPageSelection:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 22px var(--accent-glow);
+    }
+    .study-selection-badge {
+      font-size: 11px;
+      color: var(--text-secondary);
+      padding: 7px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--bg-tertiary) 88%, transparent);
+      font-weight: 600;
+    }
+    .study-inline-toggle {
+      min-height: 36px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--bg-tertiary);
+      color: var(--text-secondary);
+      font: inherit;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .study-inline-toggle:hover {
+      border-color: var(--border-active);
+      background: var(--bg-hover);
+      color: var(--text-primary);
+    }
+    body[data-theme="light"] .study-selection-badge,
+    body[data-theme="light"] .teacher-badge,
+    body[data-theme="light"] .teacher-inline-btn,
+    body[data-theme="light"] .study-related-actions button,
+    body[data-theme="light"] .study-insight-head button {
+      border-color: rgba(23, 32, 51, 0.12);
+      color: #1f2b46;
+      background: rgba(255, 255, 255, 0.94);
+    }
+    body[data-theme="light"] #studyApplyPageSelection {
+      box-shadow: 0 8px 20px rgba(79,124,255,0.16);
+    }
     #pdfCanvas { max-width: 100%; display: block; }
+    .study-page-stack {
+      width: min(1080px, 100%);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin: 0 auto;
+    }
+    .study-page-card {
+      width: 100%;
+      padding: 10px 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: rgba(255,255,255,0.02);
+      box-shadow: var(--shadow);
+    }
+    .study-page-card.active {
+      border-color: var(--border-active);
+      box-shadow: 0 0 0 1px rgba(108, 92, 231, 0.3), var(--shadow);
+    }
+    .study-page-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 8px;
+      color: var(--text-secondary);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .study-page-card-label {
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    .study-page-card-meta {
+      color: var(--text-muted);
+      font-size: 11px;
+    }
+    .study-page-card canvas {
+      max-width: 100%;
+      display: block;
+      margin: 0 auto;
+      border-radius: 12px;
+      background: #fff;
+    }
     #studyDocTextPreview {
       display: none; width: min(900px, 100%); padding: 24px; border: 1px solid var(--border);
       border-radius: var(--radius); background: #fff; color: #111; white-space: pre-wrap; line-height: 1.7;
       font-size: 14px; box-shadow: var(--shadow-lg);
     }
-    .pdf-scroll { flex: 1 1 0; height: 0; overflow: auto; background: var(--bg-primary); padding: 16px; display: flex; justify-content: center; min-height: 0; }
+    .pdf-scroll { flex: 1 1 0; height: 0; overflow: auto; background: var(--bg-primary); padding: 4px 16px 14px; display: flex; justify-content: center; align-items: flex-start; min-height: 0; }
     .study-text-drawer {
       display: none; flex-direction: column; gap: 8px; padding: 12px 16px; border-top: 1px solid var(--border);
       background: var(--bg-secondary); flex-shrink: 0;
@@ -1327,7 +2192,7 @@
     #studyPageText {
       width: 100%; min-height: 160px; max-height: 240px; resize: vertical; overflow: auto; padding: 12px;
       border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg-tertiary);
-      color: var(--text-primary); font-family: inherit; font-size: 13px; line-height: 1.6; outline: none;
+      color: var(--text-primary); font-family: inherit; font-size: calc(14px * var(--reading-font-scale)); line-height: 1.7; outline: none;
     }
     #studyNoPdf {
       display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -1338,58 +2203,269 @@
       border: 2px dashed var(--border); border-radius: var(--radius-sm);
       padding: 16px 24px; cursor: pointer; transition: var(--transition); text-align: center;
     }
-    #studyDropZone:hover, #studyDropZone.dragover { border-color: var(--accent); background: rgba(108,92,231,0.05); }
+    #studyDropZone:hover, #studyDropZone.dragover { border-color: var(--accent); background: rgba(79,124,255,0.05); }
     #pdfViewer { display: none; flex-direction: column; flex: 1; overflow: hidden; }
     .study-ai-header {
       padding: 12px 16px; border-bottom: 1px solid var(--border); font-size: 13px; font-weight: 600;
       display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-shrink: 0;
     }
     .study-ai-header-left { display: flex; align-items: center; gap: 8px; min-width: 0; }
+    .study-ai-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .study-tools-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 38px;
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--bg-tertiary) 88%, transparent);
+      color: var(--text-secondary);
+      font: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .study-tools-toggle:hover {
+      border-color: var(--border-active);
+      background: var(--bg-hover);
+      color: var(--text-primary);
+    }
+    .study-tools-burger {
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 3px;
+      width: 14px;
+    }
+    .study-tools-burger span {
+      display: block;
+      width: 14px;
+      height: 2px;
+      border-radius: 999px;
+      background: currentColor;
+    }
     #studyChatMessages {
       flex: 1 1 0; height: 0; overflow-y: auto; padding: 12px; display: flex; flex-direction: column; gap: 8px; min-height: 0;
     }
-    .study-msg { font-size: 13px; line-height: 1.6; padding: 8px 12px; border-radius: var(--radius-sm); }
-    .study-msg-user { background: rgba(108,92,231,0.12); border-left: 3px solid var(--accent); }
+    .study-msg { font-size: calc(14px * var(--reading-font-scale)); line-height: 1.7; padding: 10px 14px; border-radius: var(--radius-sm); }
+    .study-msg-user { background: rgba(79,124,255,0.12); border-left: 3px solid var(--accent); }
     .study-msg-ai { background: var(--bg-tertiary); border-left: 3px solid var(--green); }
     .study-msg-system { background: var(--bg-card); color: var(--text-muted); font-style: italic; }
+    .study-tools-overlay {
+      position: absolute;
+      inset: 63px 0 0 0;
+      background: rgba(5, 10, 20, 0.38);
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      pointer-events: none;
+      transition: var(--transition);
+      z-index: 5;
+    }
+    .study-tools-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .study-tools-drawer {
+      position: absolute;
+      top: 64px;
+      right: 0;
+      bottom: 0;
+      width: min(380px, 100%);
+      display: flex;
+      flex-direction: column;
+      border-left: 1px solid var(--border);
+      background: color-mix(in srgb, var(--bg-secondary) 94%, transparent);
+      box-shadow: -18px 0 40px rgba(0, 0, 0, 0.24);
+      backdrop-filter: blur(18px);
+      transform: translateX(104%);
+      transition: transform var(--transition);
+      z-index: 6;
+    }
+    .study-tools-drawer.open {
+      transform: translateX(0);
+    }
+    .study-tools-drawer[aria-hidden="true"] {
+      pointer-events: none;
+    }
+    .study-tools-drawer-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 14px 14px 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    .study-tools-drawer-head strong {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+    .study-tools-drawer-head small {
+      display: block;
+      color: var(--text-muted);
+      line-height: 1.5;
+      font-size: 11px;
+    }
+    .study-tools-drawer-body {
+      overflow-y: auto;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .study-tools-drawer .study-custom-box {
+      padding: 0;
+      border-top: none;
+      background: transparent;
+    }
+    .study-tools-drawer .secondary-tools {
+      margin: 0;
+    }
     .study-custom-box {
       padding: 12px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 8px;
       background: rgba(255,255,255,0.01); flex-shrink: 0;
     }
+    .study-custom-box.compact {
+      padding: 10px 12px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+      gap: 6px;
+    }
     .study-custom-box label {
       font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;
+    }
+    .study-custom-box.compact label {
+      font-size: 10px;
+      margin-bottom: 2px;
     }
     #studyCustomPrompt {
       width: 100%; min-height: 88px; max-height: 160px; resize: vertical; overflow-y: auto; padding: 10px 12px;
       border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg-tertiary);
-      color: var(--text-primary); font-family: inherit; font-size: 13px; line-height: 1.5; outline: none;
+      color: var(--text-primary); font-family: inherit; font-size: calc(14px * var(--reading-font-scale)); line-height: 1.6; outline: none;
+    }
+    .study-custom-box.compact #studyCustomPrompt {
+      min-height: 72px;
+      max-height: 120px;
+      resize: vertical;
     }
     #studyCustomPrompt:focus { border-color: var(--border-active); }
     .study-custom-actions {
       display: flex; gap: 8px; align-items: center;
     }
+    .study-custom-box.compact .study-custom-actions {
+      align-items: flex-start;
+    }
     #studyAskBtn {
       padding: 9px 12px; border: 1px solid var(--border); border-radius: 6px;
-      background: linear-gradient(135deg, var(--accent), #5a4bd1); color: #fff;
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong)); color: #fff;
       cursor: pointer; font-family: inherit; font-size: 12px; font-weight: 600; transition: var(--transition);
     }
     #studyAskBtn:hover { box-shadow: 0 4px 16px var(--accent-glow); }
-    .study-custom-hint { font-size: 11px; color: var(--text-muted); line-height: 1.5; }
+    .study-custom-hint { font-size: calc(11px * var(--ui-font-scale)); color: var(--text-muted); line-height: 1.6; }
     .study-explain-btns {
-      padding: 10px 12px; border-top: 1px solid var(--border); display: flex; gap: 6px; flex-wrap: wrap;
+      padding: 8px 10px; border-top: 1px solid var(--border); display: flex; gap: 6px; flex-wrap: wrap;
     }
     .study-explain-btns button {
-      flex: 1; padding: 7px 8px; font-size: 11px; min-width: 70px;
+      flex: 1 1 calc(25% - 6px); padding: 6px 8px; font-size: 10px; min-width: 64px;
       border: 1px solid var(--border); border-radius: 6px; background: var(--bg-tertiary);
       color: var(--text-secondary); cursor: pointer; font-family: inherit; transition: var(--transition);
     }
     .study-explain-btns button:hover { border-color: var(--accent); color: var(--accent-light); }
+    .study-scope-tools {
+      padding: 12px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 10px;
+      background: rgba(255,255,255,0.015);
+    }
+    .study-scope-tools-head, .study-insight-head {
+      display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    }
+    .study-related-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    .study-related-actions button, .study-insight-head button {
+      padding: 7px 10px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-tertiary);
+      color: var(--text-secondary); cursor: pointer; font-family: inherit; font-size: 12px; transition: var(--transition);
+    }
+    .study-related-actions button:hover, .study-insight-head button:hover { border-color: var(--accent); color: var(--accent-light); }
+    .study-related-list {
+      display: flex; flex-wrap: wrap; gap: 8px;
+    }
+    .study-related-chip {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      min-width: min(260px, 100%);
+      max-width: 320px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: color-mix(in srgb, var(--bg-tertiary) 92%, transparent);
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+    .study-related-chip-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .study-related-chip-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-primary);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .study-related-chip-subtitle {
+      font-size: 11px;
+      color: var(--text-muted);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .study-related-chip-reason {
+      font-size: 11px;
+      line-height: 1.5;
+      color: var(--text-secondary);
+    }
+    .study-related-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .study-related-actions button {
+      padding: 6px 10px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(79,124,255,0.12);
+      color: var(--accent-light);
+      cursor: pointer;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .study-related-actions button.secondary {
+      background: rgba(255,255,255,0.03);
+      color: var(--text-secondary);
+    }
+    .study-insight-panel {
+      border: 1px solid var(--border); border-radius: 14px; background: var(--bg-tertiary); padding: 12px; max-height: 320px; overflow: auto;
+    }
+    #studyInsightContent { font-size: 13px; line-height: 1.6; color: var(--text-primary); }
+    #studyInsightContent .mermaid { overflow: auto; }
 
     /* === QUIZ PANEL === */
     .quiz-layout { flex: 1 1 0; width: 100%; height: 100%; overflow-y: auto; padding: 24px; display: flex; flex-direction: column; gap: 16px; min-height: 0; }
     .quiz-card {
       background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
       padding: 24px; max-width: 720px; width: 100%; margin: 0 auto;
+      box-shadow: var(--shadow);
+      background-image: var(--panel-glow);
     }
     .quiz-card h2 { font-size: 16px; margin-bottom: 16px; }
     .quiz-form-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
@@ -1401,7 +2477,7 @@
     }
     .quiz-form-row select:focus, .quiz-form-row input:focus { border-color: var(--border-active); }
     #genQuizBtn {
-      width: 100%; padding: 12px; background: linear-gradient(135deg, var(--accent), #5a4bd1);
+      width: 100%; padding: 12px; background: linear-gradient(135deg, var(--accent), var(--accent-strong));
       color: #fff; border: none; border-radius: var(--radius-sm); font-size: 14px; font-weight: 600;
       cursor: pointer; font-family: inherit; transition: var(--transition); margin-top: 4px;
     }
@@ -1420,14 +2496,14 @@
       border-radius: var(--radius-sm); color: var(--text-primary); font-family: inherit;
       font-size: 14px; text-align: left; cursor: pointer; transition: var(--transition);
     }
-    .quiz-opt:hover:not(:disabled) { border-color: var(--accent); background: rgba(108,92,231,0.1); }
+    .quiz-opt:hover:not(:disabled) { border-color: var(--accent); background: rgba(79,124,255,0.1); }
     #qExplanation {
       display: none; padding: 10px 14px; border-radius: var(--radius-sm); font-size: 13px; line-height: 1.5;
       background: var(--bg-tertiary); margin-top: 8px;
     }
     #qNext {
       display: none; width: 100%; padding: 11px; margin-top: 10px;
-      background: linear-gradient(135deg, var(--accent), #5a4bd1); color: #fff;
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong)); color: #fff;
       border: none; border-radius: var(--radius-sm); font-size: 14px; font-weight: 600;
       cursor: pointer; font-family: inherit;
     }
@@ -1459,13 +2535,417 @@
       font-family: inherit; font-size: 14px; cursor: pointer; transition: var(--transition);
     }
     #quizRestart:hover { color: var(--text-primary); background: var(--bg-hover); }
+    .quiz-subpanel {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+    }
+    .quiz-subpanel h3 {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-bottom: 10px;
+    }
+    .quiz-helper-text {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin-top: 8px;
+    }
+    .quiz-saved-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .quiz-saved-item {
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--bg-tertiary);
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .quiz-saved-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 0;
+    }
+    .quiz-saved-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .quiz-saved-note {
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+    .quiz-saved-actions {
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .quiz-saved-actions button {
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 12px;
+      transition: var(--transition);
+    }
+    .quiz-saved-actions button:hover {
+      border-color: var(--accent);
+      color: var(--accent-light);
+    }
     @media (max-width: 600px) { #qOptions { grid-template-columns: 1fr; } }
+
+    /* === TEACHER QUESTIONS PANEL === */
+    .teacher-layout { flex: 1 1 0; width: 100%; height: 100%; overflow-y: auto; padding: 24px; min-height: 0; }
+    .teacher-shell {
+      display: grid;
+      grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+      gap: 16px;
+      align-items: start;
+    }
+    .teacher-left-col, .teacher-right-col { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+    .teacher-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+      background-image: var(--panel-glow);
+    }
+    .teacher-card h2, .teacher-card h3 { font-size: 15px; margin-bottom: 10px; }
+    .teacher-helper-text { font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+    .teacher-steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin: 14px 0 10px;
+    }
+    .teacher-step {
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      background: color-mix(in srgb, var(--bg-tertiary) 88%, transparent);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+    .teacher-step strong {
+      display: block;
+      font-size: 11px;
+      color: var(--accent-light);
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+    .teacher-toolbar-row, .teacher-support-tools, .teacher-mistake-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .teacher-toolbar-row { margin: 10px 0 14px; }
+    .teacher-inline-btn {
+      padding: 8px 12px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--bg-tertiary);
+      color: var(--text-primary);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .teacher-inline-btn:hover { border-color: var(--border-active); }
+    .teacher-inline-btn.primary {
+      border-color: transparent;
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: #fff;
+    }
+    .teacher-list-head, .teacher-current-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .teacher-current-tools {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .teacher-inline-field {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--bg-tertiary);
+      color: var(--text-secondary);
+      font-size: 12px;
+    }
+    .teacher-inline-field select {
+      min-width: 146px;
+      background: transparent;
+      border: none;
+      color: var(--text-primary);
+      outline: none;
+      font: inherit;
+    }
+    .teacher-list-head small, .teacher-current-head small { color: var(--text-muted); }
+    .teacher-question-list, .teacher-mistake-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-height: 420px;
+      overflow-y: auto;
+    }
+    .teacher-question-item, .teacher-mistake-item {
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+    }
+    .teacher-question-item.active { border-color: var(--accent); box-shadow: 0 0 0 1px rgba(79,124,255,0.2) inset; }
+    .teacher-question-item button {
+      width: 100%;
+      background: transparent;
+      border: none;
+      color: inherit;
+      text-align: left;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .teacher-question-item:hover {
+      border-color: var(--border-active);
+      background: color-mix(in srgb, var(--bg-hover) 80%, transparent);
+    }
+    .teacher-question-title { font-size: 13px; font-weight: 600; line-height: 1.5; margin-bottom: 6px; }
+    .teacher-badge-row { display: flex; gap: 6px; flex-wrap: wrap; }
+    .teacher-badge {
+      font-size: 10px;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 999px;
+      padding: 3px 8px;
+    }
+    .teacher-badge.status-new { color: #74b9ff; border-color: rgba(116,185,255,0.28); }
+    .teacher-badge.status-studying { color: #ffeaa7; border-color: rgba(255,234,167,0.28); }
+    .teacher-badge.status-solved { color: #55efc4; border-color: rgba(85,239,196,0.28); }
+    .teacher-badge.status-wrong { color: #ff7675; border-color: rgba(255,118,117,0.28); }
+    .teacher-badge.override { color: var(--accent-light); border-color: rgba(79,124,255,0.28); }
+    .teacher-badge.source { color: var(--text-primary); border-color: rgba(130,216,255,0.24); }
+    .teacher-badge.confidence-high { color: #55efc4; border-color: rgba(85,239,196,0.24); }
+    .teacher-badge.confidence-medium { color: #ffeaa7; border-color: rgba(255,234,167,0.24); }
+    .teacher-badge.confidence-low { color: #ff9f43; border-color: rgba(255,159,67,0.24); }
+    .teacher-question-text { font-size: 15px; line-height: 1.7; margin-bottom: 14px; }
+    .teacher-question-options { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
+    .teacher-current-badges { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0 10px; }
+    .teacher-support-preview {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 0 0 12px;
+    }
+    .support-checklist {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-height: 196px;
+      overflow: auto;
+      padding: 10px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: color-mix(in srgb, var(--bg-tertiary) 92%, transparent);
+    }
+    .support-checklist.empty {
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+    .support-check-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 10px;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.02);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .support-check-item:hover {
+      border-color: var(--border-active);
+      background: var(--bg-hover);
+    }
+    .support-check-item input {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--accent);
+      flex-shrink: 0;
+    }
+    .support-check-item .support-type {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 34px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      color: var(--text-muted);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+    }
+    .support-check-item .support-name {
+      min-width: 0;
+      color: var(--text-primary);
+      font-size: 12px;
+      line-height: 1.4;
+      word-break: break-word;
+    }
+    body[data-theme="light"] .support-checklist {
+      border-color: rgba(23,32,51,0.12);
+      background: rgba(255,255,255,0.94);
+    }
+    body[data-theme="light"] .support-check-item {
+      background: rgba(243,247,253,0.65);
+    }
+    .teacher-support-chip {
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: color-mix(in srgb, var(--bg-tertiary) 88%, transparent);
+      color: var(--text-secondary);
+      font-size: 11px;
+    }
+    .teacher-empty-card {
+      padding: 14px;
+      border: 1px dashed var(--border-strong);
+      border-radius: var(--radius-sm);
+      background: color-mix(in srgb, var(--bg-tertiary) 82%, transparent);
+      color: var(--text-secondary);
+    }
+    .teacher-option {
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      background: var(--bg-tertiary);
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: var(--transition);
+      text-align: left;
+      font-family: inherit;
+    }
+    .teacher-option:hover {
+      border-color: var(--border-active);
+      background: var(--bg-hover);
+    }
+    .teacher-answer-input {
+      width: 100%;
+      min-height: 120px;
+      resize: vertical;
+      padding: 12px 14px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      background: var(--bg-tertiary);
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 13px;
+      margin-bottom: 12px;
+      outline: none;
+    }
+    .teacher-answer-input:focus { border-color: var(--border-active); }
+    .teacher-action-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+    .teacher-primary-btn, .teacher-secondary-btn {
+      padding: 11px 14px;
+      border-radius: var(--radius-sm);
+      font-family: inherit;
+      font-size: 13px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .teacher-primary-btn {
+      border: none;
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: #fff;
+    }
+    .teacher-secondary-btn {
+      border: 1px solid var(--border);
+      background: var(--bg-tertiary);
+      color: var(--text-secondary);
+    }
+    .teacher-secondary-btn:hover,
+    .teacher-primary-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.16);
+    }
+    .teacher-feedback {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: color-mix(in srgb, var(--bg-tertiary) 82%, transparent);
+      padding: 14px;
+      min-height: 100px;
+    }
+    .teacher-nav-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+      justify-content: flex-end;
+    }
+    .teacher-mistake-item strong { display: block; margin-bottom: 6px; }
+    .teacher-mistake-item small { color: var(--text-muted); display: block; margin-top: 6px; line-height: 1.45; }
+    .teacher-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .teacher-summary-chip {
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px;
+      text-align: center;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+    .teacher-summary-chip strong {
+      display: block;
+      margin-top: 4px;
+      font-size: 15px;
+      color: var(--text-primary);
+    }
+    @media (max-width: 980px) {
+      .teacher-shell { grid-template-columns: 1fr; }
+      .teacher-summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .teacher-steps { grid-template-columns: 1fr; }
+    }
 
     /* === FLASHCARD PANEL === */
     .flash-layout { flex: 1 1 0; width: 100%; height: 100%; overflow-y: auto; padding: 24px; display: flex; flex-direction: column; gap: 16px; align-items: center; min-height: 0; }
     .flash-gen-card {
       background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
       padding: 20px; max-width: 600px; width: 100%;
+      box-shadow: var(--shadow);
+      background-image: var(--panel-glow);
     }
     .flash-gen-card h3 { font-size: 14px; margin-bottom: 12px; color: var(--text-secondary); }
     .flash-gen-row { display: flex; gap: 8px; margin-bottom: 10px; }
@@ -1474,7 +2954,7 @@
       border-radius: var(--radius-sm); color: var(--text-primary); font-family: inherit; font-size: 13px; outline: none;
     }
     #genFlashBtn {
-      padding: 9px 20px; background: linear-gradient(135deg, var(--accent), #5a4bd1);
+      padding: 9px 20px; background: linear-gradient(135deg, var(--accent), var(--accent-strong));
       color: #fff; border: none; border-radius: var(--radius-sm); font-size: 13px; font-weight: 600;
       cursor: pointer; font-family: inherit; white-space: nowrap;
     }
@@ -1492,7 +2972,7 @@
       display: flex; align-items: center; justify-content: center;
       padding: 24px; text-align: center; font-size: 18px; line-height: 1.5;
     }
-    .card-back { transform: rotateY(180deg); background: linear-gradient(135deg, rgba(108,92,231,0.1), rgba(162,155,254,0.08)); border-color: var(--border-active); }
+    .card-back { transform: rotateY(180deg); background: linear-gradient(135deg, rgba(79,124,255,0.1), rgba(130,216,255,0.08)); border-color: var(--border-active); }
     .card-hint { position: absolute; bottom: 10px; right: 14px; font-size: 10px; color: var(--text-muted); }
     .card-controls { display: flex; gap: 10px; max-width: 500px; width: 100%; }
     .card-controls button {
@@ -1541,6 +3021,64 @@
     .chart-bar-wrap { display: flex; flex-direction: column; align-items: center; flex: 1; height: 100%; justify-content: flex-end; gap: 4px; }
     .chart-bar { width: 100%; border-radius: 4px 4px 0 0; min-height: 4px; }
     .chart-label { font-size: 10px; color: var(--text-muted); }
+    .progress-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; margin-bottom: 16px; }
+    .progress-card {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm);
+      padding: 14px;
+      box-shadow: var(--shadow);
+      background-image: var(--panel-glow);
+    }
+    .progress-more-details {
+      margin-top: 16px;
+    }
+    .progress-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 10px; }
+    .progress-card-head h3 { font-size: 13px; }
+    .progress-card-head small { color: var(--text-muted); }
+    .progress-focus-summary {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 12px;
+      min-height: 44px;
+    }
+    .progress-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .progress-action-btn {
+      padding: 9px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--bg-tertiary);
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: var(--transition);
+      font-family: inherit;
+      font-size: 13px;
+    }
+    .progress-action-btn:hover {
+      border-color: var(--border-active);
+      background: var(--bg-hover);
+    }
+    .progress-action-btn.primary {
+      border: none;
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: #fff;
+    }
+    .progress-list { display: flex; flex-direction: column; gap: 8px; }
+    .progress-list-item {
+      border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; background: var(--bg-tertiary); padding: 10px 12px;
+    }
+    .progress-list-item strong { display: block; margin-bottom: 3px; }
+    .progress-list-item small { color: var(--text-muted); line-height: 1.4; }
+    .progress-heatmap { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; }
+    .progress-heat-cell {
+      height: 28px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.04); background: var(--bg-tertiary);
+      display: flex; align-items: center; justify-content: center; font-size: 10px; color: var(--text-muted);
+    }
+    .coverage-wrap { margin: 10px 0 18px; }
+    .coverage-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; color: var(--text-secondary); font-size: 12px; margin-bottom: 6px; }
+    #coverageBar { height: 100%; background: linear-gradient(90deg, #00b894, #55efc4); border-radius: 4px; transition: width 0.4s ease; width: 0; }
     #clearProgress {
       padding: 8px 20px; background: var(--bg-tertiary); border: 1px solid var(--border);
       border-radius: var(--radius-sm); color: var(--text-muted); cursor: pointer;
@@ -1565,7 +3103,7 @@
       font-family: inherit; font-size: 14px; transition: var(--transition);
     }
     .pomo-big-btns button:hover { background: var(--bg-hover); color: var(--text-primary); }
-    #pomoPanelStart { background: linear-gradient(135deg, var(--accent), #5a4bd1); color: #fff; border: none; }
+    #pomoPanelStart { background: linear-gradient(135deg, var(--accent), var(--accent-strong)); color: #fff; border: none; }
   </style>
 </head>
 <body>
@@ -1580,31 +3118,102 @@
       </div>
     </div>
     <div class="header-right">
-      <div class="lang-switch">
-        <label for="responseLanguageSelect">AI</label>
-        <select id="responseLanguageSelect" aria-label="AI response language">
-          <option value="tr-TR">Turkish</option>
-          <option value="en-US">English</option>
-          <option value="de-DE">German</option>
-          <option value="fr-FR">French</option>
-          <option value="ar-SA">Arabic</option>
-          <option value="es-ES">Spanish</option>
+      <div class="lang-switch theme-switch">
+        <label for="themeSelect">Theme</label>
+        <select id="themeSelect" aria-label="Theme mode">
+          <option value="auto">Auto</option>
+          <option value="dark">Dark</option>
+          <option value="light">Light</option>
+          <option value="study">Study</option>
         </select>
       </div>
       <div class="session-badge">
         <span class="dot"></span>
       <span id="sessionStatus">Starting...</span>
       </div>
-    <button class="btn-icon" id="pomodoroBtnToggle" aria-label="Pomodoro" title="Pomodoro Timer">P</button>
-    <button class="btn-icon" id="settingsBtn" aria-label="Settings" title="Settings">S</button>
-    <button class="btn-icon" id="newSessionBtn" aria-label="New session" title="New Session">N</button>
+      <button class="quick-settings-trigger" id="quickSettingsBtn" type="button" aria-label="Open quick settings">
+        <div>
+          <strong id="quickSettingsTitle" data-i18n="quick.title">Quick setup</strong><br />
+          <small id="quickSettingsSummary">AI • UI • Preset</small>
+        </div>
+      </button>
+      <div class="header-actions">
+        <button class="btn-icon" id="pomodoroBtnToggle" aria-label="Pomodoro" title="Pomodoro Timer">P</button>
+        <button class="btn-icon" id="settingsBtn" aria-label="Settings" title="Settings">S</button>
+        <button class="btn-icon" id="newSessionBtn" aria-label="New session" title="New Session">N</button>
+      </div>
     </div>
   </header>
+
+  <div class="quick-drawer-overlay" id="quickSettingsOverlay"></div>
+  <aside class="quick-drawer" id="quickSettingsDrawer" aria-hidden="true">
+    <div class="quick-drawer-header">
+      <div>
+        <h3 data-i18n="quick.title">Quick setup</h3>
+        <p data-i18n="quick.description">Use the simple controls first. Advanced provider/model settings remain in Settings.</p>
+      </div>
+      <button class="btn-icon" id="quickSettingsClose" aria-label="Close quick settings" data-i18n-aria-label="quick.closeAria" data-i18n-title="quick.closeAria" title="Close quick settings">X</button>
+    </div>
+    <div class="quick-settings-grid">
+      <div class="quick-field">
+        <label for="responseLanguageSelect" data-i18n="quick.aiLanguage">AI language</label>
+        <select id="responseLanguageSelect" aria-label="AI response language" data-i18n-aria-label="quick.aiLanguageAria">
+          <option value="tr-TR">Turkish</option>
+          <option value="en-US">English</option>
+          <option value="ru-RU">Russian</option>
+          <option value="ko-KR">Korean</option>
+          <option value="de-DE">German</option>
+          <option value="fr-FR">French</option>
+          <option value="ar-SA">Arabic</option>
+          <option value="es-ES">Spanish</option>
+        </select>
+      </div>
+      <div class="quick-field">
+        <label for="uiLocaleSelect" data-i18n="quick.uiLanguage">UI language</label>
+        <select id="uiLocaleSelect" aria-label="UI locale" data-i18n-aria-label="quick.uiLanguageAria">
+          <option value="en-US">EN</option>
+          <option value="tr-TR">TR</option>
+          <option value="ru-RU">RU</option>
+          <option value="ko-KR">KO</option>
+        </select>
+      </div>
+      <div class="quick-field">
+        <label for="fontScaleSelect" data-i18n="quick.fontSize">Text size</label>
+        <select id="fontScaleSelect" aria-label="Text size" data-i18n-aria-label="quick.fontSizeAria">
+          <option value="small" data-i18n="font.small">Small</option>
+          <option value="normal" data-i18n="font.normal">Normal</option>
+          <option value="large" data-i18n="font.large">Large</option>
+          <option value="xlarge" data-i18n="font.xlarge">Extra Large</option>
+        </select>
+      </div>
+      <div class="quick-field advanced-only">
+        <label for="promptPresetSelect" data-i18n="quick.promptPreset">Prompt preset</label>
+        <select id="promptPresetSelect" aria-label="AI prompt preset" data-i18n-aria-label="quick.promptPresetAria">
+          <option value="auto">Auto</option>
+          <option value="deep">Deep</option>
+          <option value="balanced">Balanced</option>
+          <option value="fast">Fast</option>
+        </select>
+      </div>
+      <div class="quick-toggle">
+        <div>
+          <strong data-i18n="quick.simpleMode">Simple mode</strong>
+          <small data-i18n="quick.simpleModeHint">Hide secondary controls until they are needed.</small>
+        </div>
+        <input id="simpleModeToggle" type="checkbox" />
+      </div>
+    </div>
+    <div class="quick-drawer-actions">
+      <button class="teacher-inline-btn" id="quickOpenSettingsBtn" type="button" data-i18n="quick.advancedSettings">Advanced Settings</button>
+      <button class="teacher-inline-btn" id="quickNewSessionBtn" type="button" data-i18n="quick.newSession">New Session</button>
+    </div>
+  </aside>
 
   <!-- Tab Navigation -->
   <nav class="nav-tabs" role="tablist">
     <button class="nav-tab active" data-tab="chat" role="tab" aria-selected="true">Chat</button>
     <button class="nav-tab" data-tab="study" role="tab">Study</button>
+    <button class="nav-tab" data-tab="teacher" role="tab">Teacher Q</button>
     <button class="nav-tab" data-tab="quiz" role="tab">Quiz</button>
     <button class="nav-tab" data-tab="flashcard" role="tab">Flashcards</button>
     <button class="nav-tab" data-tab="pomodoro" role="tab">Pomodoro</button>
@@ -1624,9 +3233,9 @@
         <div class="upload-zone" id="uploadZone" role="button" aria-label="Upload document">
           <div class="upload-icon">DOC</div>
           <p>Drop files here or click</p>
-          <span>PDF, TXT, PNG, JPG, PPT, PPTX (max 300MB)</span>
+          <span>PDF, DOCX, TXT, PNG, JPG, PPT, PPTX (max 300MB)</span>
         </div>
-        <input type="file" id="fileInput" hidden accept=".pdf,.txt,.md,.png,.jpg,.jpeg,.webp,.ppt,.pptx" />
+        <input type="file" id="fileInput" hidden accept=".pdf,.docx,.txt,.md,.png,.jpg,.jpeg,.webp,.ppt,.pptx" />
         <div class="upload-progress" id="uploadProgress">
           <p id="uploadText">Uploading...</p>
           <div class="upload-bar"><div class="upload-bar-fill" id="uploadFill"></div></div>
@@ -1721,37 +3330,94 @@
       <!-- PDF Pane -->
       <div class="study-pdf-pane">
         <div class="study-toolbar">
-          <button id="pdfPrev">< Prev</button>
-          <span class="page-info">Sayfa <span id="pdfPage">0</span> / <span id="pdfTotal">0</span></span>
+          <button id="pdfPrev" data-i18n="common.prev">< Prev</button>
+          <span class="page-info"><span data-i18n="study.page">Sayfa</span> <span id="pdfPage">0</span> / <span id="pdfTotal">0</span></span>
           <button id="pdfNext">Next ></button>
           <select id="studyDocumentSelect">
-            <option value="">Current study file</option>
+            <option value="" data-i18n="study.currentFile">Current study file</option>
           </select>
           <button id="studyZoomOut" title="Zoom out">-</button>
           <span class="zoom-badge" id="studyZoomLevel">100%</span>
           <button id="studyZoomIn" title="Zoom in">+</button>
-          <button id="studyZoomReset" title="Reset zoom">Reset</button>
-          <button id="studyToggleText" title="Show extracted text">Text</button>
-          <button id="studyCopyText" title="Copy current page text">Copy</button>
-          <input type="file" id="studyFileInput" accept=".pdf,.ppt,.pptx" hidden />
+          <button id="studyZoomReset" title="Reset zoom" data-i18n="common.reset">Reset</button>
+          <button id="studyToggleText" title="Show extracted text" data-i18n="study.text">Text</button>
+          <button id="studyCopyText" title="Copy current page text" data-i18n="common.copy">Copy</button>
+          <input type="file" id="studyFileInput" accept=".docx,.pdf,.ppt,.pptx,.png,.jpg,.jpeg,.webp" hidden />
+        </div>
+        <div class="study-page-select">
+          <label for="studyPageScopeMode" data-i18n="study.visiblePages">Visible Pages</label>
+          <select id="studyPageScopeMode">
+            <option value="all-pages" data-i18n="study.scope.all">All pages</option>
+            <option value="current-page" data-i18n="study.scope.current">Current page only</option>
+            <option value="nearby-3" data-i18n="study.scope.near1">Current +/- 1</option>
+            <option value="nearby-5" data-i18n="study.scope.near2">Current +/- 2</option>
+            <option value="custom-pages" data-i18n="study.scope.custom">Custom pages</option>
+          </select>
+          <input id="studyPageSelectionInput" type="text" placeholder="4-6, 8, 10-12" data-i18n-placeholder="study.scope.placeholder" />
+          <button id="studyApplyPageSelection" title="Use the selected pages" data-i18n="study.applyPages">Use These Pages</button>
+          <span class="study-selection-badge" id="studySelectionInfo" data-i18n="study.allPagesVisible">All pages visible</span>
+          <button id="studySourcePackInlineToggle" class="study-inline-toggle" type="button" data-i18n="study.showSourcePack">Show source pack</button>
+        </div>
+        <div class="surface-guide" id="studyOnboardingCard">
+          <h4 data-i18n="study.flowTitle">Study flow</h4>
+          <p data-i18n="study.flowBody">Open one source, keep only the pages you want, then ask the AI only about that visible scope.</p>
+          <div class="surface-steps">
+            <div class="surface-step"><strong data-i18n="study.flowStep1">1. Open a source</strong><span data-i18n="study.flowStep1Body">Use PDF, PPT preview, DOCX text, or image-based material.</span></div>
+            <div class="surface-step"><strong data-i18n="study.flowStep2">2. Choose pages</strong><span data-i18n="study.flowStep2Body">Use quick page buttons or a custom page range like 4-6, 8.</span></div>
+            <div class="surface-step"><strong data-i18n="study.flowStep3">3. Ask clearly</strong><span data-i18n="study.flowStep3Body">Explain, Summarize, Key Points, Feynman, or your own question.</span></div>
+          </div>
+        </div>
+        <div class="source-pack-card" id="studySourcePackCard">
+          <div class="source-pack-head">
+            <div class="source-pack-head-main">
+              <h4 data-i18n="study.packTitle">Current source pack</h4>
+              <small id="studySourcePackMeta">No source selected</small>
+            </div>
+            <button id="studySourcePackToggle" class="source-pack-toggle" type="button" data-i18n="study.hideSourcePack">Hide</button>
+          </div>
+          <div class="source-pack-body" id="studySourcePackBody">
+            <div id="studySourcePackSummary" class="source-pack-summary" data-i18n="study.packSummaryEmpty">Open one document and select the pages you want to keep visible.</div>
+            <div id="studyScopeQuickChips" class="study-scope-quick">
+              <button class="scope-chip" type="button" data-scope="current-page" data-i18n="study.scopeChip.current">Current page</button>
+              <button class="scope-chip" type="button" data-scope="nearby-3" data-i18n="study.scopeChip.near1">Current +/- 1</button>
+              <button class="scope-chip" type="button" data-scope="nearby-5" data-i18n="study.scopeChip.near2">Current +/- 2</button>
+              <button class="scope-chip" type="button" data-scope="all-pages" data-i18n="study.scopeChip.all">All pages</button>
+            </div>
+            <div id="studySourcePackChips" class="source-chip-row">
+              <span class="source-chip muted" data-i18n="study.noActiveSourcePack">No active source pack yet</span>
+            </div>
+            <div id="studyVisiblePageChips" class="study-visible-pages"></div>
+            <div class="study-scope-actions">
+              <button id="studyClearScopeBtn" type="button" data-i18n="study.showAllPages">Show all pages</button>
+              <button id="studyAcceptSuggestionsBtn" type="button" data-i18n="study.addAllSuggested">Add all suggested</button>
+            </div>
+          </div>
         </div>
         <div id="studyNoPdf">
-          <div class="upload-icon">PDF / PPT</div>
-          <p>Upload PDF or PowerPoint</p>
+          <div class="upload-icon">DOC / PDF / PPT</div>
+          <p data-i18n="study.uploadPrompt">Upload Word, PDF, PowerPoint, or image</p>
           <div id="studyDropZone">
-            <strong>Drag a file here or click</strong><br/>
-            <small>PDF, PPT ve PPTX desteklenmektedir</small>
+            <strong data-i18n="study.drop">Drag a file here or click</strong><br/>
+            <small data-i18n="study.dropHint">DOCX, PDF, PPT, PPTX, PNG, JPG ve WEBP desteklenmektedir</small>
           </div>
         </div>
         <div id="pdfViewer">
           <div class="pdf-scroll">
-            <canvas id="pdfCanvas"></canvas>
+            <div id="studyPageStack" class="study-page-stack">
+              <div class="study-page-card active">
+                <div class="study-page-card-header">
+                  <span class="study-page-card-label">Page 1</span>
+                  <span class="study-page-card-meta">Current visible page</span>
+                </div>
+                <canvas id="pdfCanvas"></canvas>
+              </div>
+            </div>
             <div id="studyDocTextPreview" style="display:none"></div>
           </div>
           <div class="study-text-drawer" id="studyTextDrawer">
             <div class="study-text-drawer-header">
-              <span>Extracted page/source text</span>
-              <button id="studyCopyTextSecondary">Copy</button>
+              <span data-i18n="study.extractedText">Extracted page/source text</span>
+              <button id="studyCopyTextSecondary" data-i18n="common.copy">Copy</button>
             </div>
             <textarea id="studyPageText" readonly></textarea>
           </div>
@@ -1761,27 +3427,74 @@
       <!-- AI Pane -->
       <div class="study-ai-pane">
         <div class="study-ai-header">
-          <div class="study-ai-header-left">AI Assistant <small style="color:var(--text-muted);font-weight:400;margin-left:4px">Page-based analysis</small></div>
-          <select id="studyLanguageSelect" class="study-lang-select" aria-label="Study AI language">
-            <option value="tr-TR">TR</option>
-            <option value="en-US">EN</option>
-            <option value="de-DE">DE</option>
-            <option value="fr-FR">FR</option>
-            <option value="ar-SA">AR</option>
-            <option value="es-ES">ES</option>
-          </select>
-        </div>
-        <div id="studyChatMessages">
-          <div class="study-msg study-msg-system">Upload a PDF or PowerPoint and analyze the current page or extracted source text with the buttons below.</div>
-        </div>
-        <div class="study-custom-box">
-          <label for="studyCustomPrompt">Extra Prompt</label>
-          <textarea id="studyCustomPrompt" placeholder="Bu sayfadaki metne gore ozel bir soru yaz. Ornek: Bu kavrami sinav icin daha detayli ve adim adim acikla."></textarea>
-          <div class="study-custom-actions">
-            <button id="studyAskBtn">Ask About This Page</button>
-            <div class="study-custom-hint">Yalnizca ekrandaki mevcut sayfa metni kullanilir. Belge disi bilgi eklenmez.</div>
+          <div class="study-ai-header-left"><span data-i18n="study.aiAssistant">AI Assistant</span> <small style="color:var(--text-muted);font-weight:400;margin-left:4px" data-i18n="study.selectedPageAnalysis">Selected-page analysis</small></div>
+          <div class="study-ai-header-actions">
+            <button id="studyToolsToggle" class="study-tools-toggle" type="button" aria-label="Open study tools" data-i18n-aria-label="study.toolsAria">
+              <span class="study-tools-burger" aria-hidden="true"><span></span><span></span><span></span></span>
+              <span data-i18n="study.toolsToggle">Tools</span>
+            </button>
+            <select id="studyLanguageSelect" class="study-lang-select" aria-label="Study AI language">
+              <option value="tr-TR">TR</option>
+              <option value="en-US">EN</option>
+              <option value="ru-RU">RU</option>
+              <option value="ko-KR">KO</option>
+              <option value="de-DE">DE</option>
+              <option value="fr-FR">FR</option>
+              <option value="ar-SA">AR</option>
+              <option value="es-ES">ES</option>
+            </select>
           </div>
         </div>
+        <div id="studyChatMessages">
+          <div class="study-msg study-msg-system" data-i18n="study.systemHint">Upload a Word file, PDF, PowerPoint, or image. Choose which pages/slides should stay visible, then ask the AI to explain that selected scope.</div>
+        </div>
+        <div class="study-custom-box compact">
+          <label for="studyCustomPrompt" data-i18n="study.extraPrompt">Extra Prompt</label>
+          <textarea id="studyCustomPrompt" placeholder="Bu sayfadaki metne gore ozel bir soru yaz. Ornek: Bu kavrami sinav icin daha detayli ve adim adim acikla." data-i18n-placeholder="study.promptPlaceholder"></textarea>
+          <div class="study-custom-actions">
+            <button id="studyAskBtn" data-i18n="study.askSelected">Ask About Selected Pages</button>
+            <div class="study-custom-hint" data-i18n="study.scopeHint">AI only uses the visible page selection or the current extracted source. If a topic continues on another page, add that page to the selection first.</div>
+          </div>
+        </div>
+        <div id="studyToolsOverlay" class="study-tools-overlay"></div>
+        <aside id="studyToolsDrawer" class="study-tools-drawer" aria-hidden="true">
+          <div class="study-tools-drawer-head">
+            <div>
+              <strong data-i18n="study.toolsDrawerTitle">Study tools</strong>
+              <small data-i18n="study.toolsDrawerBody">Keep prompts and extra tools here so the reading area stays clean.</small>
+            </div>
+            <button class="btn-icon" id="studyToolsClose" type="button" aria-label="Close study tools" data-i18n-aria-label="study.toolsCloseAria" data-i18n-title="study.toolsCloseAria" title="Close study tools">X</button>
+          </div>
+          <div class="study-tools-drawer-body">
+            <details class="secondary-tools" id="studyExtraTools">
+              <summary>
+                <span>Extra study tools</span>
+                <small>Related pages, audio, and mind map</small>
+              </summary>
+              <div class="secondary-tools-body">
+                <div class="study-scope-tools">
+                  <div class="study-scope-tools-head">
+                    <strong data-i18n="study.sourcePackTools">Source Pack Tools</strong>
+                    <span id="studyCoverageBadge" class="study-selection-badge" data-i18n="study.scopeReady">Scope ready</span>
+                  </div>
+                  <div class="study-related-actions">
+                    <button id="studySuggestPagesBtn" data-i18n="study.suggestPages">Suggest Related Pages</button>
+                    <button id="studyAudioBtn" data-i18n="study.audioOverview">Audio Overview</button>
+                    <button id="studyMindMapBtn" data-i18n="study.mindMap">Mind Map</button>
+                  </div>
+                  <div id="studyRelatedPages" class="study-related-list"></div>
+                  <div id="studyInsightPanel" class="study-insight-panel" style="display:none">
+                    <div class="study-insight-head">
+                      <strong id="studyInsightTitle">Generated Insight</strong>
+                      <button id="studyInsightClose">Close</button>
+                    </div>
+                    <div id="studyInsightContent"></div>
+                  </div>
+                </div>
+              </div>
+            </details>
+          </div>
+        </aside>
         <div class="study-explain-btns">
           <button id="studyExplainBtn">Explain</button>
           <button id="studySummarizeBtn">Summarize</button>
@@ -1792,15 +3505,179 @@
     </div>
   </div><!-- end panelStudy -->
 
+  <!-- Panel: Teacher Questions -->
+  <div class="panel" id="panelTeacher">
+    <div class="teacher-layout">
+      <div class="teacher-shell">
+        <div class="teacher-left-col">
+          <div class="teacher-card">
+            <h2>Teacher Questions</h2>
+            <p class="teacher-helper-text" data-i18n="teacher.helper">Hoca soru paketi ekle. Sistem sorulari tek tek ayirir; istersen destek PDF/PPT/Word/gorsel notlariyla birlikte mantigini anlatarak cozdurur.</p>
+            <div class="teacher-steps">
+              <div class="teacher-step"><strong data-i18n="teacher.step1">1. Paketi yukle</strong><span data-i18n="teacher.step1.body">DOCX, PDF veya foto soru kagidini yukle. Sistem sorulari otomatik ayirir.</span></div>
+              <div class="teacher-step"><strong data-i18n="teacher.step2">2. Destek ekle</strong><span data-i18n="teacher.step2.body">Konu notlari, slaytlar veya PDF'leri destek kaynak olarak sec. Birden fazla kaynak kullanabilirsin.</span></div>
+              <div class="teacher-step"><strong data-i18n="teacher.step3">3. Tek tek cozdur</strong><span data-i18n="teacher.step3.body">Soruyu anlattir, kendi cevabini yaz, sonra sonucu kontrol ettir ve yanlislarini biriktir.</span></div>
+            </div>
+            <div class="teacher-toolbar-row">
+              <button id="teacherUploadBtn" class="teacher-inline-btn primary" type="button" data-i18n="teacher.upload">Upload Question Pack</button>
+              <span class="teacher-helper-text" data-i18n="teacher.uploadHint">DOCX, PDF, JPG, PNG, WEBP desteklenir. Hoca sorularini buradan ekleyebilirsin.</span>
+            </div>
+            <div class="source-pack-card" id="teacherSourcePackCard" style="margin-top:10px">
+              <div class="source-pack-head">
+                <h4 data-i18n="study.packTitle">Current source pack</h4>
+                <small id="teacherSourcePackMeta" data-i18n="teacher.packMetaEmpty">No question pack selected</small>
+              </div>
+              <div id="teacherSourcePackSummary" class="source-pack-summary" data-i18n="teacher.packSummaryEmpty">Choose a question pack first. Then add one or more support sources to strengthen explanations.</div>
+              <div id="teacherSourcePackChips" class="source-chip-row">
+                <span class="source-chip muted" data-i18n="teacher.packChipsEmpty">Question pack and support sources will appear here.</span>
+              </div>
+            </div>
+            <div class="quiz-form-row">
+              <div>
+                <label style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px" data-i18n="teacher.questionPack">Soru Paketi</label>
+                <select id="teacherDocumentSelect">
+                  <option value="">Question source sec</option>
+                </select>
+              </div>
+            </div>
+            <div class="quiz-form-row">
+              <div>
+                <label style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px" data-i18n="teacher.supportDocs">Destek Dokumanlar</label>
+                <select id="teacherSupportDocs" multiple size="5" style="display:none">
+                  <option value="">Destek dokuman sec</option>
+                </select>
+                <div id="teacherSupportChecklist" class="support-checklist empty"></div>
+                <div class="teacher-support-tools" style="margin-top:8px">
+                  <button id="teacherSelectAllSupportBtn" class="teacher-inline-btn" type="button">Select all</button>
+                  <button id="teacherClearSupportBtn" class="teacher-inline-btn" type="button">Clear</button>
+                  <span id="teacherSupportCount" class="teacher-helper-text">0 support docs selected</span>
+                </div>
+              </div>
+            </div>
+            <p id="teacherSummary" class="teacher-helper-text" data-i18n="teacher.summaryDefault">Question source secildiginde soru sayisi ve tipleri burada gorunur.</p>
+            <div class="teacher-summary-grid">
+              <div class="teacher-summary-chip"><span data-i18n="teacher.new">New</span><strong id="teacherCountNew">0</strong></div>
+              <div class="teacher-summary-chip"><span data-i18n="teacher.studying">Studying</span><strong id="teacherCountStudying">0</strong></div>
+              <div class="teacher-summary-chip"><span data-i18n="teacher.solved">Solved</span><strong id="teacherCountSolved">0</strong></div>
+              <div class="teacher-summary-chip"><span data-i18n="teacher.wrong">Wrong</span><strong id="teacherCountWrong">0</strong></div>
+            </div>
+          </div>
+
+          <div class="teacher-card">
+            <div class="teacher-list-head">
+              <h3 id="teacherQuestionListTitle">Soru Listesi</h3>
+              <small id="teacherQuestionCounter">0 soru</small>
+            </div>
+            <div class="quiz-form-row" style="margin:0 0 10px">
+              <div style="flex:1.3">
+                <input id="teacherQuestionSearch" type="text" placeholder="Soru metninde veya tipte ara..." />
+              </div>
+              <div>
+                <select id="teacherStatusFilter">
+                  <option value="all">All</option>
+                  <option value="new">New</option>
+                  <option value="studying">Studying</option>
+                  <option value="solved">Solved</option>
+                  <option value="wrong">Wrong</option>
+                </select>
+              </div>
+              <div>
+                <select id="teacherSortMode">
+                  <option value="order">Document order</option>
+                  <option value="unsolved">Unsolved first</option>
+                  <option value="wrong">Wrong first</option>
+                </select>
+              </div>
+            </div>
+            <div id="teacherQuestionList" class="teacher-question-list">
+              <p class="teacher-helper-text">Hoca soru paketi secildiginde sorular burada tek tek listelenir.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="teacher-right-col">
+          <div class="teacher-card">
+            <div class="teacher-current-head">
+              <div>
+                <small id="teacherQuestionMeta" data-i18n="teacher.currentNone">Question secilmedi</small>
+                <h3 id="teacherCurrentTitle" data-i18n="teacher.currentTitle">Tek tek ogreterek cozdur</h3>
+                <div id="teacherCurrentBadges" class="teacher-current-badges"></div>
+              </div>
+              <div class="teacher-current-tools">
+                <label class="teacher-inline-field" for="teacherTypeOverride">
+                  <span>Question type</span>
+                  <select id="teacherTypeOverride">
+                    <option value="multiple">Multiple choice</option>
+                    <option value="classic">Open ended</option>
+                    <option value="truefalse">True / False</option>
+                  </select>
+                </label>
+              </div>
+            </div>
+            <p class="teacher-helper-text" style="margin:-2px 0 10px" data-i18n="teacher.tip">Tip: Solved olmayan bir sonraki soruya hizli gitmek icin Next Open'u kullan. Ok tuslariyla da soru degistirebilirsin.</p>
+            <div id="teacherSupportPreview" class="teacher-support-preview"></div>
+            <div class="teacher-list-head" style="margin-top:8px">
+              <h3 id="teacherSuggestedSupportTitle" style="font-size:13px">Suggested support sources</h3>
+            </div>
+            <div id="teacherSuggestedSupport" class="teacher-support-preview">
+              <div class="teacher-empty-card" data-i18n="teacher.noSuggestions">No support suggestions yet.</div>
+            </div>
+            <div id="teacherQuestionText" class="teacher-question-text" data-i18n="teacher.pickQuestionHint">Bir soru sec. Sonra istersen once “Teach This Question” ile mantigini anlat, istersen cevap verip “Check My Answer” ile degerlendirt.</div>
+            <div id="teacherQuestionOptions" class="teacher-question-options"></div>
+            <textarea id="teacherUserAnswer" class="teacher-answer-input" placeholder="Buraya kendi cevabini yaz veya secenegini gir (ornegin: B veya tam cevap)." data-i18n-placeholder="teacher.answerPlaceholder"></textarea>
+            <div id="teacherFeedback" class="teacher-feedback">
+              <p class="teacher-helper-text" data-i18n="teacher.feedbackEmpty">Ogretici anlatim ve cevap kontrol sonucu burada gorunur.</p>
+            </div>
+            <div class="teacher-bottom-bar">
+              <div class="teacher-action-row">
+                <button id="teacherTeachBtn" class="teacher-primary-btn" data-i18n="teacher.teach">Teach This Question</button>
+                <button id="teacherCheckBtn" class="teacher-secondary-btn" data-i18n="teacher.check">Check My Answer</button>
+              </div>
+              <div class="teacher-nav-row">
+                <button id="teacherPrevQuestionBtn" class="teacher-inline-btn" type="button">Prev</button>
+                <button id="teacherNextQuestionBtn" class="teacher-inline-btn" type="button">Next</button>
+                <button id="teacherNextOpenBtn" class="teacher-inline-btn" type="button">Next Open</button>
+                <button id="teacherNextWrongBtn" class="teacher-inline-btn" type="button">Next Wrong</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="teacher-card">
+            <div class="teacher-list-head">
+              <h3 id="teacherMistakeTitle">Mistake Book</h3>
+              <div class="teacher-mistake-actions">
+                <small id="teacherMistakeCounter">0 kayit</small>
+                <button id="teacherMistakeQuizBtn" class="teacher-inline-btn" type="button">Mini Quiz</button>
+                <button id="teacherMistakeDeckBtn" class="teacher-inline-btn" type="button">Recovery Cards</button>
+              </div>
+            </div>
+            <div id="teacherMistakeList" class="teacher-mistake-list">
+              <p class="teacher-helper-text" data-i18n="teacher.mistakeEmpty">Yanlis veya eksik cevaplanan hoca sorulari burada birikir.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- end panelTeacher -->
+
   <!-- Panel: Quiz -->
   <div class="panel" id="panelQuiz">
     <div class="quiz-layout">
       <!-- Setup -->
       <div class="quiz-card" id="quizSetup">
-        <h2>Create New Quiz</h2>
+        <h2 data-i18n="quiz.title">Create New Quiz</h2>
+        <div class="surface-guide">
+          <h4>Quiz flow</h4>
+          <p>Choose the main source first, then narrow the scope if needed, then let OmniTutor build a grounded quiz.</p>
+          <div class="surface-steps">
+            <div class="surface-step"><strong>1. Main source</strong>Pick one note, one teacher pack, or the whole indexed pool.</div>
+            <div class="surface-step"><strong>2. Topic scope</strong>Use the topic list or type a narrower focus.</div>
+            <div class="surface-step"><strong>3. Generate</strong>The quiz stays grounded to the selected source pack.</div>
+          </div>
+        </div>
         <div class="quiz-form-row">
           <div>
-            <label style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px">Soru Tipi</label>
+            <label style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px" data-i18n="quiz.type">Soru Tipi</label>
             <select id="quizType">
               <option value="multiple">Multiple Choice</option>
               <option value="classic">Open Ended</option>
@@ -1808,7 +3685,7 @@
             </select>
           </div>
           <div>
-            <label style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px">Zorluk</label>
+            <label style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px" data-i18n="quiz.difficulty">Zorluk</label>
             <select id="quizDifficulty">
               <option value="easy">Kolay</option>
               <option value="medium">Orta</option>
@@ -1816,7 +3693,7 @@
             </select>
           </div>
           <div>
-            <label style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px">Soru Sayisi</label>
+            <label style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px" data-i18n="quiz.count">Soru Sayisi</label>
             <select id="quizCount">
               <option value="5">5 Soru</option>
               <option value="10">10 Soru</option>
@@ -1827,13 +3704,13 @@
         </div>
         <div class="quiz-form-row">
           <div>
-            <label style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px">Kaynak Dokuman</label>
+            <label style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px" data-i18n="quiz.source">Kaynak Dokuman</label>
             <select id="quizDocumentSelect">
               <option value="">Tum indexed belgeler</option>
             </select>
           </div>
           <div>
-            <label style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px">Konu Listesi</label>
+            <label style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px" data-i18n="quiz.topicList">Konu Listesi</label>
             <select id="quizTopicSelect">
               <option value="">Otomatik / tum konular</option>
             </select>
@@ -1841,24 +3718,58 @@
         </div>
         <div class="quiz-form-row">
           <div style="flex:2">
-            <label style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px">Topic (optional refine)</label>
-            <input type="text" id="quizTopic" placeholder="Listeden konu sec veya buradan daha dar bir odak yaz..." />
+            <label style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px" data-i18n="quiz.topicRefine">Topic (optional refine)</label>
+            <input type="text" id="quizTopic" placeholder="Listeden konu sec veya buradan daha dar bir odak yaz..." data-i18n-placeholder="quiz.topicPlaceholder" />
           </div>
         </div>
-        <p style="font-size:12px;color:var(--text-muted);margin-bottom:12px">Quiz secilen dokumanin konu sirasina gore uretilecek. PowerPoint yuklersen metin cikarilabilen slide'lar da kaynak olur.</p>
-        <button id="genQuizBtn">Generate Quiz</button>
+        <div class="source-pack-card quiz-preview-card">
+          <div class="source-pack-head">
+            <h4>Quiz source pack</h4>
+            <small id="quizSourceMeta">No source selected</small>
+          </div>
+          <div id="quizSourcePreview" class="source-pack-summary">Pick a source first so OmniTutor knows what this quiz should be based on.</div>
+          <div id="quizSourceChips" class="source-chip-row">
+            <span class="source-chip muted">No active source pack yet</span>
+          </div>
+        </div>
+        <details class="secondary-tools">
+          <summary>
+            <span>Optional support sources</span>
+            <small>Use extra notes or slides to strengthen explanations</small>
+          </summary>
+          <div class="secondary-tools-body">
+            <div class="quiz-form-row">
+              <div style="flex:1">
+                <label style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px" data-i18n="quiz.support">Destek Dokumanlar (opsiyonel)</label>
+                <select id="quizSupportDocs" multiple size="4" style="display:none">
+                  <option value="">Destek dokuman sec</option>
+                </select>
+                <div id="quizSupportChecklist" class="support-checklist empty"></div>
+              </div>
+            </div>
+          </div>
+        </details>
+        <p id="quizSourceHint" class="quiz-helper-text">Quiz secilen dokumanin konu sirasina gore uretilecek. Hoca soru kagidi secersen sistem sorulari ayirir ve destek dokumanlardan bakarak cozum mantigini kurar.</p>
+        <button id="genQuizBtn" data-i18n="quiz.generate">Generate Quiz</button>
+        <div id="quizStatusLine" class="status-line"></div>
+        <div class="quiz-subpanel">
+          <h3 data-i18n="quiz.saved">Cozulmus Quizler</h3>
+          <div id="quizSavedList" class="quiz-saved-list">
+            <p class="quiz-helper-text">Bu oturumda cozulen quizler burada kalir. Tekrar acip inceleyebilirsin.</p>
+          </div>
+        </div>
       </div>
       <!-- Play -->
       <div class="quiz-card" id="quizPlay" style="display:none">
         <div class="quiz-progress-bar"><div id="quizProgress"></div></div>
         <div class="quiz-meta">
-          <span>Soru <strong id="qNumber">1</strong> / <strong id="qTotal">5</strong></span>
-          <span class="q-timer">Timer <span id="qTimer">60</span>s</span>
+          <span><span data-i18n="quiz.questionMeta">Soru</span> <strong id="qNumber">1</strong> / <strong id="qTotal">5</strong></span>
+          <span class="q-timer"><span data-i18n="quiz.timer">Timer</span> <span id="qTimer">60</span>s</span>
         </div>
         <div id="qText"></div>
         <div id="qOptions"></div>
         <input type="text" id="classicAnswer" placeholder="Cevabinizi yazin..." />
-        <button id="classicSubmit">Cevapla</button>
+        <button id="classicSubmit" data-i18n="quiz.submit">Cevapla</button>
         <div id="qExplanation"></div>
         <button id="qNext">Next Question ></button>
       </div>
@@ -1870,7 +3781,7 @@
           <div style="color:var(--text-secondary)">Basari Orani: <strong id="finalPct">%0</strong></div>
           <div class="score-bar-wrap"><div id="scoreBar"></div></div>
         </div>
-        <h3 style="font-size:14px;margin-bottom:10px;color:var(--text-secondary)">Cevap Incelemesi</h3>
+        <h3 style="font-size:14px;margin-bottom:10px;color:var(--text-secondary)" data-i18n="quiz.review">Cevap Incelemesi</h3>
         <div id="answerReview"></div>
         <button id="quizRestart">Create New Quiz</button>
       </div>
@@ -1882,7 +3793,16 @@
     <div class="flash-layout">
       <!-- Generator -->
       <div class="flash-gen-card">
-        <h3>Generate Cards with AI</h3>
+        <h3 data-i18n="flash.title">Generate Cards with AI</h3>
+        <div class="surface-guide" style="margin-bottom:12px">
+          <h4>Flashcard flow</h4>
+          <p>Use cards to reinforce weak logic and repeated mistakes, not just to memorize headings.</p>
+          <div class="surface-steps">
+            <div class="surface-step"><strong>1. Main source</strong>Pick the note or teacher question pack that should drive the deck.</div>
+            <div class="surface-step"><strong>2. Support sources</strong>Add optional notes or slides if you want deeper teaching on each card.</div>
+            <div class="surface-step"><strong>3. Review</strong>Easy and Hard ratings teach OmniTutor what you still miss.</div>
+          </div>
+        </div>
         <div class="flash-gen-row">
           <select id="flashDocumentSelect">
             <option value="">Tum indexed belgeler</option>
@@ -1891,20 +3811,45 @@
             <option value="">Otomatik / tum konular</option>
           </select>
         </div>
+        <div class="source-pack-card flash-preview-card">
+          <div class="source-pack-head">
+            <h4>Flashcard source pack</h4>
+            <small id="flashSourceMeta">No source selected</small>
+          </div>
+          <div id="flashSourcePreview" class="source-pack-summary">Choose the source that should drive the deck. Teacher packs create logic-building recovery cards.</div>
+          <div id="flashSourceChips" class="source-chip-row">
+            <span class="source-chip muted">No active source pack yet</span>
+          </div>
+        </div>
+        <details class="secondary-tools">
+          <summary>
+            <span>Optional support sources</span>
+            <small>Add notes or slides to improve the teaching quality of the cards</small>
+          </summary>
+          <div class="secondary-tools-body">
+            <div class="flash-gen-row">
+              <select id="flashSupportDocs" multiple size="4" style="min-height:110px;display:none">
+                <option value="">Destek dokuman sec</option>
+              </select>
+              <div id="flashSupportChecklist" class="support-checklist empty"></div>
+            </div>
+          </div>
+        </details>
         <div class="flash-gen-row">
-          <input type="text" id="flashTopic" placeholder="Konu (listeden sec veya elle daralt)" />
+          <input type="text" id="flashTopic" placeholder="Konu (listeden sec veya elle daralt)" data-i18n-placeholder="flash.topicPlaceholder" />
           <input type="number" id="flashCount" value="10" min="3" max="30" style="max-width:80px" />
           <button id="genFlashBtn">Generate Cards</button>
         </div>
-        <p style="font-size:12px;color:var(--text-muted);margin-top:6px">Kartlar secilen dokumanin konu akisini takip eder. PPTX slide metni varsa o da kaynak olarak kullanilir.</p>
+        <p id="flashSourceHint" style="font-size:12px;color:var(--text-muted);margin-top:6px">Kartlar secilen dokumanin konu akisini takip eder. Hoca sorulari secersen mantigi ogreten kartlara donusturur; secili destek dokumanlari da kullanir.</p>
+        <div id="flashStatusLine" class="status-line"></div>
       </div>
       <!-- Deck list -->
       <div style="width:100%;max-width:600px">
-        <h3 style="font-size:13px;color:var(--text-muted);margin-bottom:8px">Destelerim</h3>
+        <h3 style="font-size:13px;color:var(--text-muted);margin-bottom:8px" data-i18n="flash.decks">Destelerim</h3>
         <div id="deckList"></div>
       </div>
       <!-- Card viewer -->
-        <div id="noDeckMsg">Generate cards or choose a deck from the list.</div>
+        <div id="noDeckMsg">Henüz açık deste yok. Yukarıdan kart üret veya soldaki destelerden birini aç.</div>
       <div id="cardView" style="display:none">
         <div class="card-counter" id="cardCounter">1 / 1</div>
         <div class="card-wrap">
@@ -1924,7 +3869,7 @@
           <button id="cardEasy">Easy</button>
           <button id="cardNext">Next ></button>
         </div>
-        <p style="font-size:11px;color:var(--text-muted);text-align:center">Left/Right = move, Space = flip, 1 = Easy, 2 = Hard</p>
+        <p style="font-size:11px;color:var(--text-muted);text-align:center" data-i18n="flash.shortcuts">Left/Right = move, Space = flip, 1 = Easy, 2 = Hard</p>
       </div>
     </div>
   </div><!-- end panelFlashcard -->
@@ -1961,28 +3906,112 @@
   <!-- Panel: Progress -->
   <div class="panel" id="panelProgress">
     <div class="progress-layout">
-      <h2 style="font-size:18px;font-weight:700;margin-bottom:16px">Progress Dashboard</h2>
-      <div class="stat-grid">
-        <div class="stat-card"><div class="stat-val" id="statStudyTime">0d</div><div class="stat-label">Study Time</div></div>
-        <div class="stat-card"><div class="stat-val" id="statQuizCount">0</div><div class="stat-label">Quiz Sayisi</div></div>
-        <div class="stat-card"><div class="stat-val" id="statAvgScore">%0</div><div class="stat-label">Ort. Basari</div></div>
-        <div class="stat-card"><div class="stat-val" id="statStreak">0 streak</div><div class="stat-label">Consecutive Days</div></div>
-        <div class="stat-card"><div class="stat-val" id="statFlashcards">0</div><div class="stat-label">Flashcard</div></div>
+      <h2 style="font-size:18px;font-weight:700;margin-bottom:16px" data-i18n="progress.title">Progress Dashboard</h2>
+      <div class="progress-card" style="margin-bottom:16px">
+        <div class="progress-card-head">
+          <h3 data-i18n="progress.how">How to use this page</h3>
+          <small data-i18n="progress.quick">Quick orientation</small>
+        </div>
+        <div class="teacher-steps" style="margin:0">
+          <div class="teacher-step"><strong data-i18n="progress.track">Track</strong><span data-i18n="progress.trackBody">Study time, quiz results and streak are collected automatically while you work.</span></div>
+          <div class="teacher-step"><strong data-i18n="progress.review">Review</strong><span data-i18n="progress.reviewBody">Due Today and Weak Areas show what needs immediate attention.</span></div>
+          <div class="teacher-step"><strong data-i18n="progress.recover">Recover</strong><span data-i18n="progress.recoverBody">Use mistake-driven quizzes and flashcards to close weak spots faster.</span></div>
+        </div>
       </div>
-      <h3 style="font-size:13px;color:var(--text-muted);margin-bottom:8px">Son 7 Quiz Basarisi</h3>
-      <div class="chart-bars" id="progressChart"></div>
-      <h3 style="font-size:13px;color:var(--text-muted);margin:12px 0 8px">Quiz History</h3>
-      <table class="history-table">
-        <thead><tr><th>Tarih</th><th>Skor</th><th>Basari</th><th>Rozet</th></tr></thead>
-        <tbody id="progressHistory"></tbody>
-      </table>
-      <button id="clearProgress">Reset Progress</button>
+      <div class="progress-grid progress-focus-grid">
+        <section class="progress-card progress-focus-card">
+          <div class="progress-card-head">
+            <h3 data-i18n="progress.todayFocus">Today Focus</h3>
+            <small id="progressTodayStatus">Ready</small>
+          </div>
+          <p id="progressTodaySummary" class="progress-focus-summary">Upload a source or review due cards to start a clean study loop.</p>
+          <div id="progressTodayActions" class="progress-actions"></div>
+        </section>
+        <section class="progress-card progress-focus-card">
+          <div class="progress-card-head">
+            <h3 data-i18n="progress.continueFocus">Continue Where You Left Off</h3>
+            <small id="progressContinueStatus">Waiting</small>
+          </div>
+          <p id="progressContinueSummary" class="progress-focus-summary">Your latest source, weakest area, or review queue will show here.</p>
+          <div id="progressContinueActions" class="progress-actions"></div>
+        </section>
+      </div>
+      <div class="progress-grid">
+        <section class="progress-card">
+          <div class="progress-card-head">
+            <h3 data-i18n="progress.weakAreasTitle">Weak Areas</h3>
+            <small data-i18n="progress.needReinforcement">Need reinforcement</small>
+          </div>
+          <div id="progressWeakAreas" class="progress-list"></div>
+        </section>
+        <section class="progress-card">
+          <div class="progress-card-head">
+            <h3 data-i18n="progress.learningPathTitle">Learning Path</h3>
+            <small data-i18n="progress.documentTopicOrder">Document topic order</small>
+          </div>
+          <div id="progressLearningPath" class="progress-list"></div>
+        </section>
+      </div>
+      <details class="secondary-tools progress-more-details" id="progressMoreDetails">
+        <summary>
+          <span data-i18n="progress.moreMetrics">More metrics</span>
+          <small data-i18n="progress.moreMetricsHint">Heatmap, totals, coverage, and quiz history</small>
+        </summary>
+        <div class="secondary-tools-body">
+          <div class="stat-grid">
+            <div class="stat-card"><div class="stat-val" id="statStudyTime">0d</div><div class="stat-label" data-i18n="progress.stat.studyTime">Study Time</div></div>
+            <div class="stat-card"><div class="stat-val" id="statQuizCount">0</div><div class="stat-label" data-i18n="progress.stat.quizCount">Quiz Count</div></div>
+            <div class="stat-card"><div class="stat-val" id="statAvgScore">%0</div><div class="stat-label" data-i18n="progress.stat.avgScore">Average Score</div></div>
+            <div class="stat-card"><div class="stat-val" id="statStreak">0 streak</div><div class="stat-label" data-i18n="progress.stat.streak">Consecutive Days</div></div>
+            <div class="stat-card"><div class="stat-val" id="statFlashcards">0</div><div class="stat-label" data-i18n="progress.stat.flashcards">Flashcards</div></div>
+            <div class="stat-card"><div class="stat-val" id="statDueToday">0</div><div class="stat-label" data-i18n="progress.stat.dueToday">Due Today</div></div>
+            <div class="stat-card"><div class="stat-val" id="statCoverage">0%</div><div class="stat-label" data-i18n="progress.stat.coverage">Coverage</div></div>
+          </div>
+          <div class="progress-grid">
+            <section class="progress-card">
+              <div class="progress-card-head">
+                <h3 data-i18n="progress.activityHeatmap">Activity Heatmap</h3>
+                <small data-i18n="progress.last21Days">Last 21 days</small>
+              </div>
+              <div id="progressHeatmap" class="progress-heatmap"></div>
+            </section>
+            <section class="progress-card">
+              <div class="progress-card-head">
+                <h3 data-i18n="progress.dueTodayTitle">Due Today</h3>
+                <small data-i18n="progress.fsrsQueue">FSRS queue</small>
+              </div>
+              <div id="progressDueToday" class="progress-list"></div>
+            </section>
+          </div>
+          <h3 style="font-size:13px;color:var(--text-muted);margin-bottom:8px" data-i18n="progress.recentQuizTitle">Recent quiz results</h3>
+          <div class="chart-bars" id="progressChart"></div>
+          <div class="coverage-wrap">
+            <div class="coverage-head">
+              <span data-i18n="progress.coverageMeterTitle">Coverage Meter</span>
+              <span id="coverageMeta">0 / 0 topics</span>
+            </div>
+            <div class="score-bar-wrap"><div id="coverageBar"></div></div>
+          </div>
+          <h3 style="font-size:13px;color:var(--text-muted);margin:12px 0 8px" data-i18n="progress.quizHistoryTitle">Quiz History</h3>
+          <table class="history-table">
+            <thead><tr><th data-i18n="progress.table.date">Date</th><th data-i18n="progress.table.score">Score</th><th data-i18n="progress.table.success">Success</th><th data-i18n="progress.table.badge">Badge</th></tr></thead>
+            <tbody id="progressHistory"></tbody>
+          </table>
+          <button id="clearProgress">Reset Progress</button>
+        </div>
+      </details>
     </div>
   </div><!-- end panelProgress -->
 
   <!-- Floating Pomodoro Widget (always visible when running) -->
   <div class="pomo-widget" id="pomoWidget">
-    <div class="pomo-label" id="pomoWidgetLabel">Focus</div>
+    <div class="pomo-widget-handle" id="pomoWidgetHandle" title="Drag to move">
+      <div class="pomo-widget-title">
+        <span class="pomo-widget-grip" aria-hidden="true"><span></span><span></span><span></span></span>
+        <div class="pomo-label" id="pomoWidgetLabel">Focus</div>
+      </div>
+      <button id="pomoWidgetDock" class="pomo-widget-mini" type="button" title="Reset position">↺</button>
+    </div>
     <div class="pomo-ring-wrap" style="position:relative">
       <svg class="pomo-ring" width="80" height="80" viewBox="0 0 100 100">
         <circle class="pomo-ring-bg" cx="50" cy="50" r="45" />
@@ -2007,21 +4036,21 @@
   <div class="modal-overlay" id="settingsModal">
     <div class="modal">
       <div class="modal-header">
-        <h2>Settings</h2>
-        <button class="modal-close" id="settingsClose" aria-label="Close settings">X</button>
+        <h2 data-i18n="settings.title">Settings</h2>
+        <button class="modal-close" id="settingsClose" aria-label="Close settings" data-i18n-aria-label="settings.closeAria" data-i18n-title="settings.closeAria" title="Close settings">X</button>
       </div>
       <div class="modal-body">
-        <div class="settings-alert" id="settingsAlert">
+        <div class="settings-alert" id="settingsAlert" data-i18n="settings.noKeyDetected">
           No API key detected. Please configure your AI provider to start using OmniTutor.
         </div>
         <div class="key-status" id="keyStatus">
           <span class="status-dot inactive" id="keyDot"></span>
-          <span>Status: </span>
-          <span class="key-preview" id="keyPreviewText">Not configured</span>
+          <span data-i18n="settings.status">Status:</span>
+          <span class="key-preview" id="keyPreviewText" data-i18n="settings.notConfigured">Not configured</span>
         </div>
         <div class="settings-diagnostic" id="settingsTestOutput"></div>
         <div class="form-group">
-          <label for="providerSelect">AI Provider</label>
+          <label for="providerSelect" data-i18n="settings.provider">AI Provider</label>
           <select id="providerSelect">
             <option value="gemini">Google Gemini</option>
             <option value="openai">OpenAI (ChatGPT)</option>
@@ -2032,38 +4061,43 @@
           </select>
         </div>
         <div class="form-group" id="apiKeyGroup">
-          <label for="apiKeyInput" id="apiKeyLabel">API Key</label>
+          <label for="apiKeyInput" id="apiKeyLabel" data-i18n="settings.apiKey">API Key</label>
           <div class="input-with-toggle">
-            <input type="password" id="apiKeyInput" placeholder="Enter your API key..." autocomplete="off" spellcheck="false" />
-            <button class="toggle-visibility" id="toggleKey" aria-label="Toggle key visibility">Show</button>
+            <input type="password" id="apiKeyInput" data-i18n-placeholder="settings.apiKeyPlaceholder" placeholder="Enter your API key..." autocomplete="off" spellcheck="false" />
+            <button class="toggle-visibility" id="toggleKey" aria-label="Toggle key visibility" data-i18n-aria-label="settings.toggleKeyAria" data-i18n-title="settings.toggleKeyAria" title="Toggle key visibility" data-i18n="settings.show">Show</button>
           </div>
-          <span class="form-hint" id="keyHint">Get your key at <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener" id="keyLink">aistudio.google.com/apikey</a></span>
-          <button id="clearKeyBtn" type="button" style="margin-top:8px;background:transparent;border:1px solid var(--border);color:var(--text-secondary);padding:8px 10px;border-radius:8px;cursor:pointer;font-size:12px;">Clear Saved Key</button>
+          <span class="form-hint" id="keyHint"><span data-i18n="settings.getKeyAt">Get your key at</span> <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener" id="keyLink">aistudio.google.com/apikey</a></span>
+          <button id="clearKeyBtn" type="button" style="margin-top:8px;background:transparent;border:1px solid var(--border);color:var(--text-secondary);padding:8px 10px;border-radius:8px;cursor:pointer;font-size:12px;" data-i18n="settings.clearSavedKey">Clear Saved Key</button>
         </div>
         <div class="form-group" id="baseUrlGroup" style="display:none;">
-          <label for="baseUrlInput">Base URL</label>
-          <input type="text" id="baseUrlInput" placeholder="http://localhost:11434/v1" autocomplete="off" spellcheck="false" style="width:100%;padding:12px 14px;background:var(--bg-tertiary);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text-primary);font-family:'JetBrains Mono',monospace;font-size:13px;outline:none;transition:var(--transition);" />
-          <span class="form-hint">The API endpoint URL. For local Ollama use `http://localhost:11434` or `http://localhost:11434/v1`.</span>
+          <label for="baseUrlInput" data-i18n="settings.baseUrl">Base URL</label>
+          <input type="text" id="baseUrlInput" data-i18n-placeholder="settings.baseUrlPlaceholderLocal" placeholder="http://localhost:11434/v1" autocomplete="off" spellcheck="false" style="width:100%;padding:12px 14px;background:var(--bg-tertiary);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text-primary);font-family:'JetBrains Mono',monospace;font-size:13px;outline:none;transition:var(--transition);" />
+          <span class="form-hint" data-i18n="settings.baseUrlHint">The API endpoint URL. For local Ollama use `http://localhost:11434` or `http://localhost:11434/v1`.</span>
         </div>
         <div class="form-group">
-          <label for="modelInput">Model</label>
-          <input type="text" id="modelInput" list="modelSuggestions" placeholder="e.g. gemini-2.0-flash" autocomplete="off" spellcheck="false" style="width:100%;padding:12px 14px;background:var(--bg-tertiary);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text-primary);font-family:'JetBrains Mono',monospace;font-size:13px;outline:none;transition:var(--transition);" />
+          <label for="modelInput" data-i18n="settings.model">Model</label>
+          <input type="text" id="modelInput" list="modelSuggestions" data-i18n-placeholder="settings.modelPlaceholder" placeholder="e.g. gemini-2.0-flash" autocomplete="off" spellcheck="false" style="width:100%;padding:12px 14px;background:var(--bg-tertiary);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text-primary);font-family:'JetBrains Mono',monospace;font-size:13px;outline:none;transition:var(--transition);" />
           <datalist id="modelSuggestions"></datalist>
-          <span class="form-hint">Type a model name or select from suggestions.</span>
+          <span class="form-hint" data-i18n="settings.modelHint">Type a model name or select from suggestions.</span>
         </div>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-secondary" id="settingsCancel">Cancel</button>
-        <button class="btn btn-secondary" id="settingsTest">Test Connection</button>
-        <button class="btn btn-primary" id="settingsSave">Save Settings</button>
+        <button class="btn btn-secondary" id="settingsCancel" data-i18n="settings.cancel">Cancel</button>
+        <button class="btn btn-secondary" id="settingsTest" data-i18n="settings.test">Test Connection</button>
+        <button class="btn btn-primary" id="settingsSave" data-i18n="settings.save">Save Settings</button>
       </div>
     </div>
   </div>
 
+  <script src="i18n.js"></script>
   <script>
     // --- State ---
     const ACTIVE_SESSION_KEY = "omnitutor-active-session-id";
     const SELECTED_MODE_KEY = "omnitutor-selected-mode";
+    const THEME_KEY = "omnitutor-theme-mode";
+    const UI_LOCALE_KEY = "omnitutor-ui-locale";
+    const SIMPLE_MODE_KEY = "omnitutor-simple-mode";
+    const FONT_SCALE_KEY = "omnitutor-font-scale";
     const MODE_NAMES = {
       deep: "Deep Learning",
       rapid: "Rapid Review",
@@ -2078,6 +4112,11 @@
     let hasMessages = false;
     let clearApiKeyRequested = false;
     let responseLanguage = localStorage.getItem("omnitutor-response-language") || "tr-TR";
+    let promptPreset = localStorage.getItem("omnitutor-prompt-preset") || "auto";
+    let themeMode = localStorage.getItem(THEME_KEY) || "auto";
+    let uiLocale = window.i18n?.normalizeLocale(localStorage.getItem(UI_LOCALE_KEY) || navigator.language || "en-US") || "en-US";
+    let simpleMode = localStorage.getItem(SIMPLE_MODE_KEY) !== "false";
+    let fontScale = localStorage.getItem(FONT_SCALE_KEY) || "normal";
     const uploadedSourceFiles = new Map();
 
     // --- DOM ---
@@ -2098,17 +4137,62 @@
     const sidebar = $("#sidebar");
     const overlay = $("#overlay");
     const responseLanguageSelect = $("#responseLanguageSelect");
+    const uiLocaleSelect = $("#uiLocaleSelect");
     const studyLanguageSelect = $("#studyLanguageSelect");
+    const promptPresetSelect = $("#promptPresetSelect");
+    const themeSelect = $("#themeSelect");
+    const quickSettingsBtn = $("#quickSettingsBtn");
+    const quickSettingsDrawer = $("#quickSettingsDrawer");
+    const quickSettingsOverlay = $("#quickSettingsOverlay");
+    const quickSettingsClose = $("#quickSettingsClose");
+    const quickSettingsSummary = $("#quickSettingsSummary");
+    const quickOpenSettingsBtn = $("#quickOpenSettingsBtn");
+    const quickNewSessionBtn = $("#quickNewSessionBtn");
+    const simpleModeToggle = $("#simpleModeToggle");
+    const fontScaleSelect = $("#fontScaleSelect");
+    const systemThemeQuery = window.matchMedia ? window.matchMedia("(prefers-color-scheme: light)") : null;
+
+    function t(key, params = {}, fallback = "") {
+      return window.i18n?.t(key, params, fallback) || fallback || key;
+    }
+
+    function getSelectedOptionLabel(selectEl, fallbackValue = "") {
+      return selectEl?.selectedOptions?.[0]?.textContent?.trim() || fallbackValue || selectEl?.value || "";
+    }
+
+    function setToggleKeyText(isVisible) {
+      const toggleKeyBtn = $("#toggleKey");
+      if (!toggleKeyBtn) return;
+      const text = t(
+        isVisible ? "settings.hide" : "settings.show",
+        {},
+        isVisible ? "Hide" : "Show"
+      );
+      toggleKeyBtn.textContent = text;
+      toggleKeyBtn.setAttribute("aria-label", t("settings.toggleKeyAria", {}, "Toggle key visibility"));
+      toggleKeyBtn.setAttribute("title", text);
+    }
+
+    async function persistSessionPreferences(partial = {}) {
+      if (!sessionId) return;
+      try {
+        await fetch(`/api/session/${sessionId}/preferences`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(partial),
+        });
+      } catch {}
+    }
 
     function setActiveSession(id) {
       sessionId = id || null;
       window.currentSessionId = sessionId;
       if (sessionId) {
         localStorage.setItem(ACTIVE_SESSION_KEY, sessionId);
-        $("#sessionStatus").textContent = "Session Active";
+        $("#sessionStatus").textContent = t("session.active", {}, "Session Active");
       } else {
         localStorage.removeItem(ACTIVE_SESSION_KEY);
-        $("#sessionStatus").textContent = "Disconnected";
+        $("#sessionStatus").textContent = t("session.disconnected", {}, "Disconnected");
       }
     }
 
@@ -2131,7 +4215,10 @@
         btn.classList.toggle("active", btn.dataset.mode === selectedMode);
       });
       if (announce) {
-        showToast(`Study mode: ${MODE_NAMES[selectedMode]}`, "success");
+        showToast(
+          t("toast.studyModeUpdated", { mode: MODE_NAMES[selectedMode] }, `Study mode: ${MODE_NAMES[selectedMode]}`),
+          "success"
+        );
       }
     }
 
@@ -2139,6 +4226,25 @@
       resetChatSurface();
       resetDocumentsSurface();
       setActiveSession(data.id);
+      const preferences = data?.preferences && typeof data.preferences === "object" ? data.preferences : {};
+      if (!localStorage.getItem("omnitutor-response-language") && preferences.responseLanguage) {
+        setResponseLanguage(preferences.responseLanguage);
+      }
+      if (!localStorage.getItem(UI_LOCALE_KEY) && preferences.uiLocale) {
+        setUiLocale(preferences.uiLocale, { persist: false });
+      }
+      if (!localStorage.getItem("omnitutor-prompt-preset") && preferences.promptPreset) {
+        setPromptPreset(preferences.promptPreset);
+      }
+      if (!localStorage.getItem(THEME_KEY) && preferences.theme) {
+        applyTheme(preferences.theme, { persist: false });
+      }
+      if (localStorage.getItem(SIMPLE_MODE_KEY) === null && typeof preferences.simpleMode === "boolean") {
+        applySimpleMode(preferences.simpleMode, { persist: false });
+      }
+      if (localStorage.getItem(FONT_SCALE_KEY) === null && preferences.fontScale) {
+        applyFontScale(preferences.fontScale, { persist: false, syncSession: false });
+      }
 
       const history = Array.isArray(data.history) ? data.history : [];
       history.forEach((entry) => {
@@ -2160,6 +4266,8 @@
             uploadedAt: doc.uploadedAt || 0,
             topics: Array.isArray(doc.topics) ? doc.topics : [],
             preview: doc.preview || null,
+            questionSource: !!doc.questionSource,
+            questionSummary: doc.questionSummary || null,
           });
         });
 
@@ -2171,7 +4279,7 @@
     async function loadExistingSession(targetSessionId) {
       const res = await fetch(`/api/session/${targetSessionId}`);
       const { data, raw } = await readApiPayload(res);
-      if (!data) throw new Error(describeNonJsonResponse(raw, "Session yaniti JSON degildi."));
+      if (!data) throw new Error(describeNonJsonResponse(raw, t("session.nonJsonResponse", {}, "Session response was not JSON.")));
       const apiErr = getApiError(data);
       if (!res.ok || apiErr) throw new Error(apiErr?.message || "Session yuklenemedi.");
       await restoreSessionData(data);
@@ -2190,12 +4298,23 @@
       }
 
       try {
-        const res = await fetch("/api/session", { method: "POST" });
+        const res = await fetch("/api/session", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            uiLocale: getCurrentUiLocale(),
+            responseLanguage: getCurrentLanguage(),
+            promptPreset: getCurrentPromptPreset(),
+            theme: getCurrentThemeMode(),
+            simpleMode: isSimpleModeEnabled(),
+            fontScale: getCurrentFontScale(),
+          }),
+        });
         const { data, raw } = await readApiPayload(res);
-        if (!data) throw new Error(describeNonJsonResponse(raw, "Yeni session yaniti JSON degildi."));
+        if (!data) throw new Error(describeNonJsonResponse(raw, t("session.newNonJsonResponse", {}, "New session response was not JSON.")));
         setActiveSession(data.sessionId);
       } catch (e) {
-        showToast("Failed to connect to server", "error");
+        showToast(t("toast.serverConnectFailed", {}, "Failed to connect to server"), "error");
         setActiveSession("");
       }
     }
@@ -2241,20 +4360,184 @@
       return responseLanguage || "tr-TR";
     }
 
+    function getCurrentUiLocale() {
+      return window.i18n?.normalizeLocale(uiLocale || "en-US") || "en-US";
+    }
+
     function syncLanguageSelects(value) {
       if (responseLanguageSelect && responseLanguageSelect.value !== value) responseLanguageSelect.value = value;
       if (studyLanguageSelect && studyLanguageSelect.value !== value) studyLanguageSelect.value = value;
+    }
+
+    function syncUiLocaleSelect() {
+      if (uiLocaleSelect && uiLocaleSelect.value !== getCurrentUiLocale()) {
+        uiLocaleSelect.value = getCurrentUiLocale();
+      }
     }
 
     function setResponseLanguage(value) {
       responseLanguage = value || "tr-TR";
       localStorage.setItem("omnitutor-response-language", responseLanguage);
       syncLanguageSelects(responseLanguage);
+      if (sessionId) persistSessionPreferences({ responseLanguage });
+      refreshQuickSettingsSummary();
+    }
+
+    function setUiLocale(value, options = {}) {
+      uiLocale = window.i18n?.setLocale(value, { persist: options.persist !== false }) || "en-US";
+      syncUiLocaleSelect();
+      if (sessionId && options.syncSession !== false) {
+        persistSessionPreferences({ uiLocale });
+      }
+      if (sessionId) {
+        $("#sessionStatus").textContent = t("session.active", {}, "Session Active");
+      } else {
+        $("#sessionStatus").textContent = t("session.disconnected", {}, "Disconnected");
+      }
+      refreshQuickSettingsSummary();
+    }
+
+    function getCurrentPromptPreset() {
+      return ["auto", "deep", "balanced", "fast"].includes(promptPreset) ? promptPreset : "auto";
+    }
+
+    function normalizeFontScale(value) {
+      return ["small", "normal", "large", "xlarge"].includes(value) ? value : "normal";
+    }
+
+    function getCurrentFontScale() {
+      return normalizeFontScale(fontScale);
+    }
+
+    function syncFontScaleSelect() {
+      if (fontScaleSelect && fontScaleSelect.value !== getCurrentFontScale()) {
+        fontScaleSelect.value = getCurrentFontScale();
+      }
+    }
+
+    function applyFontScale(value, options = {}) {
+      fontScale = normalizeFontScale(value);
+      if (options.persist !== false) {
+        localStorage.setItem(FONT_SCALE_KEY, fontScale);
+      }
+      document.body.setAttribute("data-font-scale", fontScale);
+      syncFontScaleSelect();
+      if (sessionId && options.syncSession !== false) {
+        persistSessionPreferences({ fontScale });
+      }
+    }
+
+    function syncPromptPresetSelect() {
+      if (promptPresetSelect && promptPresetSelect.value !== getCurrentPromptPreset()) {
+        promptPresetSelect.value = getCurrentPromptPreset();
+      }
+    }
+
+    function setPromptPreset(value) {
+      promptPreset = ["auto", "deep", "balanced", "fast"].includes(value) ? value : "auto";
+      localStorage.setItem("omnitutor-prompt-preset", promptPreset);
+      syncPromptPresetSelect();
+      if (sessionId) persistSessionPreferences({ promptPreset });
+      refreshQuickSettingsSummary();
+    }
+
+    function getCurrentThemeMode() {
+      return ["auto", "dark", "light", "study"].includes(themeMode) ? themeMode : "auto";
+    }
+
+    function getResolvedTheme(mode = getCurrentThemeMode()) {
+      if (mode === "auto") {
+        return systemThemeQuery?.matches ? "light" : "dark";
+      }
+      return ["dark", "light", "study"].includes(mode) ? mode : "dark";
+    }
+
+    function syncThemeSelect() {
+      if (themeSelect && themeSelect.value !== getCurrentThemeMode()) {
+        themeSelect.value = getCurrentThemeMode();
+      }
+    }
+
+    function applyTheme(value, options = {}) {
+      const mode = ["auto", "dark", "light", "study"].includes(value) ? value : "auto";
+      themeMode = mode;
+      if (options.persist !== false) {
+        localStorage.setItem(THEME_KEY, themeMode);
+      }
+      document.body.setAttribute("data-theme", getResolvedTheme(themeMode));
+      document.body.setAttribute("data-theme-mode", themeMode);
+      syncThemeSelect();
+      if (sessionId && options.syncSession !== false) {
+        persistSessionPreferences({ theme: themeMode });
+      }
+      refreshQuickSettingsSummary();
+    }
+
+    function isSimpleModeEnabled() {
+      return !!simpleMode;
+    }
+
+    function syncSimpleModeToggle() {
+      if (simpleModeToggle) simpleModeToggle.checked = isSimpleModeEnabled();
+    }
+
+    function applySimpleMode(value, options = {}) {
+      simpleMode = value !== false;
+      if (options.persist !== false) {
+        localStorage.setItem(SIMPLE_MODE_KEY, String(simpleMode));
+      }
+      document.body.classList.toggle("simple-mode", simpleMode);
+      syncSimpleModeToggle();
+      const studyExtraTools = document.getElementById("studyExtraTools");
+      if (studyExtraTools) {
+        studyExtraTools.open = !simpleMode;
+      }
+      document.querySelectorAll(".secondary-tools").forEach((details) => {
+        if (!details.id || details.id === "studyExtraTools") return;
+        details.open = !simpleMode;
+      });
+      if (sessionId && options.syncSession !== false) {
+        persistSessionPreferences({ simpleMode });
+      }
+      refreshQuickSettingsSummary();
+      document.dispatchEvent(new CustomEvent("simpleModeChange", { detail: { simpleMode } }));
+    }
+
+    function refreshQuickSettingsSummary() {
+      if (!quickSettingsSummary) return;
+      const aiLabel = responseLanguageSelect?.selectedOptions?.[0]?.textContent || getCurrentLanguage();
+      const uiLabel = uiLocaleSelect?.selectedOptions?.[0]?.textContent || getCurrentUiLocale();
+      const presetLabel = promptPresetSelect?.selectedOptions?.[0]?.textContent || getCurrentPromptPreset();
+      const modeLabel = isSimpleModeEnabled()
+        ? t("quick.simpleLabel", {}, "Simple")
+        : t("quick.advancedLabel", {}, "Advanced");
+      quickSettingsSummary.textContent = `${aiLabel} • ${uiLabel} • ${presetLabel} • ${modeLabel}`;
+    }
+
+    function openQuickSettings() {
+      if (!quickSettingsDrawer || !quickSettingsOverlay) return;
+      quickSettingsDrawer.classList.add("open");
+      quickSettingsDrawer.setAttribute("aria-hidden", "false");
+      quickSettingsOverlay.classList.add("open");
+      document.body.classList.add("drawer-open");
+    }
+
+    function closeQuickSettings() {
+      if (!quickSettingsDrawer || !quickSettingsOverlay) return;
+      quickSettingsDrawer.classList.remove("open");
+      quickSettingsDrawer.setAttribute("aria-hidden", "true");
+      quickSettingsOverlay.classList.remove("open");
+      document.body.classList.remove("drawer-open");
     }
 
     window.showToast = showToast;
     window.getApiError = getApiError;
     window.getCurrentResponseLanguage = getCurrentLanguage;
+    window.getCurrentUiLocale = getCurrentUiLocale;
+    window.getCurrentPromptPreset = getCurrentPromptPreset;
+    window.getCurrentThemeMode = getCurrentThemeMode;
+    window.getCurrentSimpleMode = isSimpleModeEnabled;
+    window.getCurrentFontScale = getCurrentFontScale;
     window.getSelectedStudyMode = () => selectedMode;
     window.renderMarkdown = parseMarkdown;
 
@@ -2446,7 +4729,7 @@
           autoOpen: true,
         });
         switchTab("study");
-        showToast(`${effectiveName} Study sekmesinde acildi.`, "success");
+        showToast(t("toast.studyOpened", { name: effectiveName }, `${effectiveName} opened in Study.`), "success");
         return true;
       }
 
@@ -2462,13 +4745,13 @@
             switchTab("study");
             showToast(
               preview?.available
-                ? `${effectiveName} Study sekmesinde slide preview ile acildi.`
-                : `${effectiveName} Study sekmesinde metin kaynagi olarak acildi.`,
+                ? t("toast.studyOpenedPreview", { name: effectiveName }, `${effectiveName} opened in Study with slide preview.`)
+                : t("toast.studyOpenedText", { name: effectiveName }, `${effectiveName} opened in Study as a text source.`),
               "success"
             );
           })
           .catch((error) => {
-            showToast(error.message || "PowerPoint Study sekmesinde acilamadi.", "error");
+            showToast(error.message || t("toast.studyOpenFailedPpt", {}, "PowerPoint could not be opened in Study."), "error");
           });
         return true;
       }
@@ -2486,7 +4769,7 @@
       if (data.preview?.available && typeof window.studyModule.loadPreviewPdfDocument === "function") {
         await window.studyModule.loadPreviewPdfDocument(data.documentId, fileName);
         switchTab("study");
-        showToast(`${fileName} slide preview ile Study sekmesinde acildi.`, "success");
+        showToast(t("toast.studyOpenedPreview", { name: fileName }, `${fileName} opened in Study with slide preview.`), "success");
         return true;
       }
 
@@ -2494,9 +4777,12 @@
         await window.studyModule.loadIndexedTextDocument(data.documentId, fileName);
         switchTab("study");
         if (isPdf) {
-          showToast(`${fileName} extracted text olarak Study sekmesinde acildi. Tam PDF goruntuleme icin dosyayi yeniden yukleyin.`, "success");
+          showToast(
+            t("toast.studyOpenedExtractedPdf", { name: fileName }, `${fileName} opened in Study as extracted text. Re-upload to view the full PDF.`),
+            "success"
+          );
         } else {
-          showToast(`${fileName} Study sekmesinde acildi.`, "success");
+          showToast(t("toast.studyOpened", { name: fileName }, `${fileName} opened in Study.`), "success");
         }
         return true;
       }
@@ -2514,14 +4800,19 @@
       return lowerName.endsWith(".ppt") || lowerName.endsWith(".pptx");
     }
 
+    function isDocxFile(file) {
+      const lowerName = (file?.name || "").toLowerCase();
+      return lowerName.endsWith(".docx");
+    }
+
     async function deleteDocument(documentId, fileName = "Dokuman") {
       if (!sessionId || !documentId) return;
-      if (!confirm(`"${fileName}" kaldirilsin mi?`)) return;
+      if (!confirm(t("toast.deleteDocumentConfirm", { name: fileName }, `"${fileName}" kaldirilsin mi?`))) return;
 
       try {
         const res = await fetch(`/api/session/${sessionId}/document/${documentId}`, { method: "DELETE" });
         const { data, raw } = await readApiPayload(res);
-        if (!data) throw new Error(describeNonJsonResponse(raw, "Silme yaniti JSON degildi."));
+        if (!data) throw new Error(describeNonJsonResponse(raw, t("document.deleteNonJsonResponse", {}, "Delete response was not JSON.")));
         const apiErr = getApiError(data);
         if (!res.ok || apiErr) throw new Error(apiErr?.message || "Dokuman silinemedi.");
 
@@ -2533,9 +4824,9 @@
           detail: { sessionId, deletedDocumentId: documentId },
         }));
 
-        showToast(`${fileName} kaldirildi.`, "success");
+        showToast(t("toast.documentRemoved", { name: fileName }, `${fileName} removed.`), "success");
       } catch (error) {
-        showToast(error.message || "Dokuman silinemedi.", "error");
+        showToast(error.message || t("toast.documentDeleteFailed", {}, "Document could not be removed."), "error");
       }
     }
 
@@ -2568,7 +4859,7 @@
 
       const statusSpan = document.createElement("span");
       statusSpan.className = "doc-status";
-      statusSpan.textContent = data.indexed ? "OK" : "WARN";
+      statusSpan.textContent = data.questionSource ? "QS" : (data.indexed ? "OK" : "WARN");
 
       metaWrap.appendChild(iconSpan);
       metaWrap.appendChild(nameSpan);
@@ -2593,7 +4884,7 @@
           try {
             await openServerDocumentInStudy(data);
           } catch (error) {
-            showToast(error.message || "Dokuman Study sekmesinde acilamadi.", "error");
+            showToast(error.message || t("toast.documentOpenFailed", {}, "Document could not be opened in Study."), "error");
           }
         });
       } else {
@@ -2613,7 +4904,9 @@
       actions.appendChild(deleteBtn);
       li.appendChild(actions);
 
-      if (icon === "PPT" && !data.indexed) {
+      if (data.questionSource) {
+        li.title = `Soru dokumani algilandi. ${data.questionSummary?.count || 0} soru bulundu.`;
+      } else if (icon === "PPT" && !data.indexed) {
         li.title = "PPT/PPTX metni kaynak olarak hazirlanamadi veya bu dosya Study icin uygun degil.";
       }
 
@@ -2638,24 +4931,31 @@
         const res = await fetch("/api/chat", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ sessionId, message: msg, language: getCurrentLanguage(), mode: selectedMode }),
+          body: JSON.stringify({
+            sessionId,
+            message: msg,
+            language: getCurrentLanguage(),
+            mode: selectedMode,
+            preset: getCurrentPromptPreset(),
+            citationMode: "inline",
+          }),
         });
 
         const { data, raw } = await readApiPayload(res);
         if (!data) {
-          throw new Error(describeNonJsonResponse(raw, "Sohbet yaniti JSON degildi."));
+          throw new Error(describeNonJsonResponse(raw, t("chat.nonJsonResponse", {}, "Chat response was not JSON.")));
         }
         const apiErr = getApiError(data);
         if (apiErr) {
           const hint = apiErr.hint ? `\n\nİpucu: ${apiErr.hint}` : "";
           showToast(apiErr.message, "error");
-          addMessage("assistant", "Warning: " + apiErr.message + hint);
+          addMessage("assistant", `Warning: ${apiErr.message}${hint}`);
         } else {
           addMessage("assistant", data.response);
         }
       } catch (e) {
-        showToast("Connection error", "error");
-        addMessage("assistant", "Warning: Connection failed. Please check the server.");
+        showToast(t("toast.connectionError", {}, "Connection error"), "error");
+        addMessage("assistant", t("toast.connectionAssistantWarning", {}, "Warning: Connection failed. Please check the server."));
       } finally {
         typingEl.classList.remove("visible");
         isLoading = false;
@@ -2666,12 +4966,12 @@
     // --- File Upload ---
     async function uploadFile(file) {
       if (!sessionId) {
-        showToast("Session not ready", "error");
+        showToast(t("toast.sessionNotReady", {}, "Session not ready"), "error");
         throw new Error("Session not ready");
       }
 
       uploadProgress.classList.add("visible");
-      uploadText.textContent = `Uploading ${file.name}...`;
+      uploadText.textContent = t("upload.progressUploading", { name: file.name }, `Uploading ${file.name}...`);
       uploadFill.style.width = "30%";
 
       const formData = new FormData();
@@ -2688,7 +4988,7 @@
         uploadFill.style.width = "90%";
         const { data, raw } = await readApiPayload(res);
         if (!data) {
-          throw new Error(describeNonJsonResponse(raw, "Yukleme yaniti JSON degildi."));
+          throw new Error(describeNonJsonResponse(raw, t("upload.nonJsonResponse", {}, "Upload response was not JSON.")));
         }
         const apiErr = getApiError(data);
 
@@ -2704,6 +5004,10 @@
 
           if (isPdfFile(file) || isPptFile(file)) {
             openUploadedDocumentInStudy(file, data.fileName || file.name, data.documentId || "", data.preview || null);
+          } else if (isDocxFile(file) && data.indexed) {
+            openServerDocumentInStudy(data).catch((error) => {
+              showToast(error.message || t("toast.wordOpenFailed", {}, "Word document could not be opened in Study."), "error");
+            });
           }
 
           if (data.indexed) {
@@ -2712,10 +5016,16 @@
               : (isPptFile(file)
                 ? (data.preview?.available ? " PowerPoint slide preview ve metni hazir." : " PowerPoint metni kaynak olarak hazir.")
                 : "");
-            showToast(`${data.fileName} indexed and ready.${extraHint}`, "success");
+            showToast(
+              t("toast.fileIndexedReady", { name: data.fileName, hint: extraHint }, `${data.fileName} indexed and ready.${extraHint}`),
+              "success"
+            );
           } else {
             const reason = data.hint || data.reason || "Bu dosya kaynak olarak kullanilamadi.";
-            showToast(`Dosya yuklendi ama kaynaklanamadi: ${reason}`, "error");
+            showToast(
+              t("toast.fileUploadNotIndexed", { reason }, `File uploaded but could not be used as a source: ${reason}`),
+              "error"
+            );
           }
 
           window.dispatchEvent(new CustomEvent("documents:updated", {
@@ -2723,6 +5033,7 @@
               sessionId,
               documentId: data.documentId || "",
               indexed: !!data.indexed,
+              questionSource: !!data.questionSource,
               fileName: data.fileName || file.name,
             },
           }));
@@ -2730,7 +5041,7 @@
           return data;
         }
       } catch (e) {
-        showToast("Upload failed: " + e.message, "error");
+        showToast(t("toast.uploadFailed", { message: e.message }, `Upload failed: ${e.message}`), "error");
         throw e;
       } finally {
         setTimeout(() => {
@@ -2828,20 +5139,147 @@
     if (responseLanguageSelect) {
       responseLanguageSelect.addEventListener("change", (event) => {
         setResponseLanguage(event.target.value);
-        showToast(`AI dili guncellendi: ${event.target.selectedOptions[0]?.textContent || event.target.value}`, "success");
+        showToast(
+          t(
+            "toast.aiLanguageUpdated",
+            { label: getSelectedOptionLabel(event.target, event.target.value) },
+            `AI language updated: ${getSelectedOptionLabel(event.target, event.target.value)}`
+          ),
+          "success"
+        );
+      });
+    }
+
+    if (uiLocaleSelect) {
+      uiLocaleSelect.addEventListener("change", (event) => {
+        setUiLocale(event.target.value);
+        showToast(
+          t(
+            "toast.uiLanguageUpdated",
+            { label: getSelectedOptionLabel(event.target, event.target.value) },
+            `UI language updated: ${getSelectedOptionLabel(event.target, event.target.value)}`
+          ),
+          "success"
+        );
       });
     }
 
     if (studyLanguageSelect) {
       studyLanguageSelect.addEventListener("change", (event) => {
         setResponseLanguage(event.target.value);
-        showToast(`Study dili guncellendi: ${event.target.selectedOptions[0]?.textContent || event.target.value}`, "success");
+        showToast(
+          t(
+            "toast.studyLanguageUpdated",
+            { label: getSelectedOptionLabel(event.target, event.target.value) },
+            `Study language updated: ${getSelectedOptionLabel(event.target, event.target.value)}`
+          ),
+          "success"
+        );
       });
     }
 
+    if (promptPresetSelect) {
+      promptPresetSelect.addEventListener("change", (event) => {
+        setPromptPreset(event.target.value);
+        showToast(
+          t(
+            "toast.presetUpdated",
+            { label: getSelectedOptionLabel(event.target, event.target.value) },
+            `Prompt preset updated: ${getSelectedOptionLabel(event.target, event.target.value)}`
+          ),
+          "success"
+        );
+      });
+    }
+
+    if (themeSelect) {
+      themeSelect.addEventListener("change", (event) => {
+        applyTheme(event.target.value);
+        showToast(
+          t(
+            "toast.themeUpdated",
+            { label: getSelectedOptionLabel(event.target, event.target.value) },
+            `Theme updated: ${getSelectedOptionLabel(event.target, event.target.value)}`
+          ),
+          "success"
+        );
+      });
+    }
+
+    if (quickSettingsBtn) {
+      quickSettingsBtn.addEventListener("click", openQuickSettings);
+    }
+    if (quickSettingsClose) {
+      quickSettingsClose.addEventListener("click", closeQuickSettings);
+    }
+    if (quickSettingsOverlay) {
+      quickSettingsOverlay.addEventListener("click", closeQuickSettings);
+    }
+    if (simpleModeToggle) {
+      simpleModeToggle.addEventListener("change", (event) => {
+        applySimpleMode(Boolean(event.target.checked));
+        showToast(
+          t(
+            event.target.checked ? "toast.simpleOn" : "toast.simpleOff",
+            {},
+            event.target.checked ? "Simple mode enabled" : "Advanced mode enabled"
+          ),
+          "success"
+        );
+      });
+    }
+    if (fontScaleSelect) {
+      fontScaleSelect.addEventListener("change", (event) => {
+        applyFontScale(event.target.value);
+        showToast(
+          t(
+            "toast.fontSizeUpdated",
+            { label: getSelectedOptionLabel(event.target, event.target.value) },
+            `Text size updated: ${getSelectedOptionLabel(event.target, event.target.value)}`
+          ),
+          "success"
+        );
+      });
+    }
+    if (quickOpenSettingsBtn) {
+      quickOpenSettingsBtn.addEventListener("click", () => {
+        closeQuickSettings();
+        openSettings();
+      });
+    }
+    if (quickNewSessionBtn) {
+      quickNewSessionBtn.addEventListener("click", () => {
+        closeQuickSettings();
+        $("#newSessionBtn")?.click();
+      });
+    }
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeQuickSettings();
+      }
+    });
+
+    if (systemThemeQuery) {
+      systemThemeQuery.addEventListener("change", () => {
+        if (getCurrentThemeMode() === "auto") {
+          applyTheme("auto", { persist: false });
+        }
+      });
+    }
+
+    document.addEventListener("uiLocaleChange", () => {
+      refreshQuickSettingsSummary();
+      setToggleKeyText(apiKeyInput?.type === "text");
+      if (providerSelect?.value) {
+        updateProviderUI(providerSelect.value);
+        renderKeyStatus(providerSelect.value);
+        renderLastTest(providerSelect.value);
+      }
+    });
+
     // New session
     $("#newSessionBtn").addEventListener("click", async () => {
-      if (confirm("Start a new session? Current progress will be lost.")) {
+      if (confirm(t("toast.confirmNewSession", {}, "Start a new session? Current progress will be lost."))) {
         messagesEl.innerHTML = "";
         welcomeEl.style.display = "flex";
         messagesEl.appendChild(welcomeEl);
@@ -2852,7 +5290,7 @@
         window.dispatchEvent(new CustomEvent("documents:updated", {
           detail: { sessionId: window.currentSessionId || "", reset: true },
         }));
-        showToast("New session started!", "success");
+        showToast(t("toast.newSessionStarted", {}, "New session started!"), "success");
       }
     });
 
@@ -2947,11 +5385,11 @@
 
       keyDot.className = `status-dot ${ready ? "active" : "inactive"}`;
       if (!profile.requiresKey) {
-        keyPreviewText.textContent = `${label} - No key required`;
+        keyPreviewText.textContent = t("settings.noKeyRequired", { provider: label }, `${label} - No key required`);
       } else if (profile.hasKey) {
-        keyPreviewText.textContent = `${label} - ${profile.keyPreview || "Ready"}`;
+        keyPreviewText.textContent = `${label} - ${profile.keyPreview || t("settings.ready", {}, "Ready")}`;
       } else {
-        keyPreviewText.textContent = `${label} - Not configured`;
+        keyPreviewText.textContent = `${label} - ${t("settings.notConfigured", {}, "Not configured")}`;
       }
     }
 
@@ -2966,18 +5404,18 @@
       }
 
       const lines = [];
-      lines.push(`Provider: ${preset.name || provider}`);
-      lines.push(`Status: ${lastTest.status === "ok" ? "connected" : "error"}`);
-      if (lastTest.baseUrl) lines.push(`URL: ${lastTest.baseUrl}`);
-      lines.push(`Model: ${modelInput.value.trim() || profile.model || preset.defaultModel || "-"}`);
-      if (lastTest.latencyMs) lines.push(`Latency: ${lastTest.latencyMs}ms`);
-      if (lastTest.modelOrigin) lines.push(`Model origin: ${lastTest.modelOrigin}`);
-      if (lastTest.message) lines.push(`Message: ${lastTest.message}`);
-      if (lastTest.hint) lines.push(`Hint: ${lastTest.hint}`);
+      lines.push(`${t("settings.provider", {}, "Provider")}: ${preset.name || provider}`);
+      lines.push(`${t("settings.status", {}, "Status")}: ${lastTest.status === "ok" ? t("settings.connected", {}, "connected") : t("settings.error", {}, "error")}`);
+      if (lastTest.baseUrl) lines.push(`${t("settings.url", {}, "URL")}: ${lastTest.baseUrl}`);
+      lines.push(`${t("settings.model", {}, "Model")}: ${modelInput.value.trim() || profile.model || preset.defaultModel || "-"}`);
+      if (lastTest.latencyMs) lines.push(`${t("settings.latency", {}, "Latency")}: ${lastTest.latencyMs}ms`);
+      if (lastTest.modelOrigin) lines.push(`${t("settings.modelOrigin", {}, "Model origin")}: ${lastTest.modelOrigin}`);
+      if (lastTest.message) lines.push(`${t("settings.message", {}, "Message")}: ${lastTest.message}`);
+      if (lastTest.hint) lines.push(`${t("settings.hint", {}, "Hint")}: ${lastTest.hint}`);
       if (lastTest.availableModels && lastTest.availableModels.length) {
-        lines.push(`Available models: ${lastTest.availableModels.join(", ")}`);
+        lines.push(`${t("settings.availableModels", {}, "Available models")}: ${lastTest.availableModels.join(", ")}`);
       }
-      if (lastTest.sample) lines.push(`Reply sample: ${String(lastTest.sample).trim()}`);
+      if (lastTest.sample) lines.push(`${t("settings.replySample", {}, "Reply sample")}: ${String(lastTest.sample).trim()}`);
 
       showSettingsDiagnostic(lines.join("\n"), lastTest.status !== "ok");
     }
@@ -3004,7 +5442,9 @@
 
       if (provider === "ollama" || provider === "custom") {
         baseUrlGroup.style.display = "flex";
-        baseUrlInput.placeholder = provider === "custom" ? "https://api.example.com/v1" : "http://localhost:11434/v1";
+        baseUrlInput.placeholder = provider === "custom"
+          ? t("settings.baseUrlPlaceholderCustom", {}, "https://api.example.com/v1")
+          : t("settings.baseUrlPlaceholderLocal", {}, "http://localhost:11434/v1");
       } else {
         baseUrlGroup.style.display = "none";
       }
@@ -3037,6 +5477,7 @@
     function openSettings() {
       clearApiKeyRequested = false;
       applyProfileToForm(providerSelect.value || settingsState.activeProvider || "gemini");
+      setToggleKeyText(apiKeyInput.type === "text");
       settingsModal.classList.add("visible");
     }
 
@@ -3068,7 +5509,7 @@
 
         const activeProfile = getProfileState(settingsState.activeProvider);
         if (activeProfile.requiresKey && !activeProfile.hasKey) {
-          showSettingsAlert("No API key detected for the active provider. Configure settings before using cloud AI.");
+          showSettingsAlert(t("settings.noKeyDetectedActive", {}, "No API key detected for the active provider. Configure settings before using cloud AI."));
           setTimeout(() => {
             if (!settingsModal.classList.contains("visible")) openSettings();
           }, 800);
@@ -3110,17 +5551,24 @@
           await loadSettings(provider);
           const savedProfile = getProfileState(provider);
           if (savedProfile.requiresKey && !savedProfile.hasKey) {
-            showSettingsAlert("Provider saved but API key is missing.");
+            showSettingsAlert(t("settings.savedMissingKey", {}, "Provider saved but API key is missing."));
           } else {
             clearSettingsAlert();
           }
-          showToast(`Settings saved - ${getProviderPreset(provider).name || provider}`, "success");
+          showToast(
+            t(
+              "toast.settingsSaved",
+              { provider: getProviderPreset(provider).name || provider },
+              `Settings saved - ${getProviderPreset(provider).name || provider}`
+            ),
+            "success"
+          );
           apiKeyInput.value = "";
           clearApiKeyRequested = false;
           closeSettings();
         }
       } catch (e) {
-        showToast("Failed to save settings", "error");
+        showToast(t("toast.settingsSaveFailed", {}, "Failed to save settings"), "error");
       }
     }
 
@@ -3135,7 +5583,7 @@
       if (clearApiKeyRequested) body.clearApiKey = true;
 
       settingsTestBtn.disabled = true;
-      settingsTestBtn.textContent = "Testing...";
+      settingsTestBtn.textContent = t("settings.testing", {}, "Testing...");
       try {
         const res = await fetch("/api/settings/test", {
           method: "POST",
@@ -3161,7 +5609,10 @@
           settingsState.profiles[provider] = { ...getProfileState(provider), lastTest: failedLastTest };
           renderModelSuggestions(provider, failedLastTest.availableModels);
           renderLastTest(provider, failedLastTest);
-          showToast(`Connection failed: ${apiErr.message}`, "error");
+          showToast(
+            t("toast.connectionFailed", { message: apiErr.message }, `Connection failed: ${apiErr.message}`),
+            "error"
+          );
           return;
         }
 
@@ -3170,7 +5621,7 @@
           status: "ok",
           testedAt: Date.now(),
           latencyMs: data.latencyMs || null,
-          message: "Connection OK",
+          message: t("settings.connectionOkMessage", {}, "Connection OK"),
           hint: "",
           code: "",
           baseUrl: data.baseUrl || baseUrl || "",
@@ -3181,14 +5632,20 @@
         settingsState.profiles[provider] = { ...getProfileState(provider), lastTest: okLastTest };
         renderModelSuggestions(provider, okLastTest.availableModels);
         renderLastTest(provider, okLastTest);
-        showToast(`Connection OK (${data.latencyMs || "?"}ms)`, "success");
+        showToast(
+          t("toast.connectionOk", { latency: data.latencyMs || "?" }, `Connection OK (${data.latencyMs || "?"}ms)`),
+          "success"
+        );
       } catch (e) {
-        showSettingsAlert("Connection test failed. Check network and provider settings.");
-        showSettingsDiagnostic("Status: error\nMessage: Connection test failed before a server response was received.", true);
-        showToast("Connection test failed", "error");
+        showSettingsAlert(t("settings.connectionTestFailed", {}, "Connection test failed. Check network and provider settings."));
+        showSettingsDiagnostic(
+          `${t("settings.status", {}, "Status")}: ${t("settings.error", {}, "error")}\n${t("settings.message", {}, "Message")}: ${t("settings.connectionNoResponse", {}, "Connection test failed before a server response was received.")}`,
+          true
+        );
+        showToast(t("toast.connectionTestFailed", {}, "Connection test failed"), "error");
       } finally {
         settingsTestBtn.disabled = false;
-        settingsTestBtn.textContent = "Test Connection";
+        settingsTestBtn.textContent = t("settings.test", {}, "Test Connection");
       }
     }
 
@@ -3201,7 +5658,7 @@
       clearKeyBtn.addEventListener("click", () => {
         apiKeyInput.value = "";
         clearApiKeyRequested = true;
-        showSettingsAlert("Saved API key will be cleared on save.");
+        showSettingsAlert(t("settings.clearOnSave", {}, "Saved API key will be cleared on save."));
       });
     }
 
@@ -3212,7 +5669,7 @@
     $("#toggleKey").addEventListener("click", () => {
       const isPassword = apiKeyInput.type === "password";
       apiKeyInput.type = isPassword ? "text" : "password";
-      $("#toggleKey").textContent = isPassword ? "Hide" : "Show";
+      setToggleKeyText(isPassword);
     });
 
     apiKeyInput.addEventListener("keydown", (e) => {
@@ -3227,6 +5684,7 @@
     const panels = {
       chat: document.getElementById("panelChat"),
       study: document.getElementById("panelStudy"),
+      teacher: document.getElementById("panelTeacher"),
       quiz: document.getElementById("panelQuiz"),
       flashcard: document.getElementById("panelFlashcard"),
       pomodoro: document.getElementById("panelPomodoro"),
@@ -3306,7 +5764,14 @@
     }
 
     // --- Boot ---
+    setUiLocale(getCurrentUiLocale(), { syncSession: false });
     syncLanguageSelects(getCurrentLanguage());
+    syncUiLocaleSelect();
+    syncPromptPresetSelect();
+    applyFontScale(getCurrentFontScale(), { persist: false, syncSession: false });
+    applyTheme(getCurrentThemeMode(), { persist: false });
+    applySimpleMode(isSimpleModeEnabled(), { persist: false, syncSession: false });
+    refreshQuickSettingsSummary();
     applySelectedMode(selectedMode, false);
     initSession();
     loadSettings();
@@ -3320,14 +5785,22 @@
       pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
     }
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+  <script>
+    if (window.mermaid) {
+      window.mermaid.initialize({ startOnLoad: false, securityLevel: "loose", theme: "dark" });
+    }
+  </script>
 
   <!-- Feature Modules -->
   <script src="study.js"></script>
+  <script src="teacher-questions.js"></script>
   <script src="quiz.js"></script>
   <script src="flashcard.js"></script>
   <script src="pomodoro.js"></script>
   <script src="progress.js"></script>
 </body>
 </html>
+
 
 

@@ -1,0 +1,74 @@
+﻿<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="120" y1="80" x2="1480" y2="820" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B1525"/>
+      <stop offset="1" stop-color="#131A2A"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#5A85FF"/>
+      <stop offset="1" stop-color="#7B6BFF"/>
+    </linearGradient>
+    <linearGradient id="ok" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#22C55E"/>
+      <stop offset="1" stop-color="#16A34A"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="900" rx="30" fill="url(#bg)"/>
+  <circle cx="1320" cy="140" r="170" fill="#7C6CFF" opacity="0.10"/>
+  <circle cx="220" cy="760" r="190" fill="#3DD7AA" opacity="0.08"/>
+
+  <text x="120" y="110" fill="#F5F8FF" font-family="Segoe UI, Arial, sans-serif" font-size="38" font-weight="700">OmniTutor Workflow</text>
+  <text x="120" y="148" fill="#94A8CC" font-family="Segoe UI, Arial, sans-serif" font-size="20">From source pack to teaching, quiz, flashcards, and review.</text>
+
+  <rect x="118" y="220" width="250" height="430" rx="26" fill="#111B2E" stroke="#243657"/>
+  <text x="156" y="272" fill="#F7FAFF" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="700">1. Source Pack</text>
+  <text x="156" y="315" fill="#A9BCDE" font-family="Segoe UI, Arial, sans-serif" font-size="18">Upload notes, PPTs, PDFs,</text>
+  <text x="156" y="343" fill="#A9BCDE" font-family="Segoe UI, Arial, sans-serif" font-size="18">question sheets, or images.</text>
+  <rect x="156" y="384" width="174" height="54" rx="16" fill="#18263D"/>
+  <text x="243" y="418" text-anchor="middle" fill="#FFFFFF" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="700">Main Source</text>
+  <rect x="156" y="456" width="174" height="54" rx="16" fill="#18263D"/>
+  <text x="243" y="490" text-anchor="middle" fill="#FFFFFF" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="700">Support Notes</text>
+  <rect x="156" y="528" width="174" height="54" rx="16" fill="#18263D"/>
+  <text x="243" y="562" text-anchor="middle" fill="#FFFFFF" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="700">Page Scope</text>
+
+  <rect x="454" y="220" width="300" height="430" rx="26" fill="#111B2E" stroke="#243657"/>
+  <text x="492" y="272" fill="#F7FAFF" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="700">2. AI Teaching</text>
+  <text x="492" y="315" fill="#A9BCDE" font-family="Segoe UI, Arial, sans-serif" font-size="18">Adaptive prompts optimize</text>
+  <text x="492" y="343" fill="#A9BCDE" font-family="Segoe UI, Arial, sans-serif" font-size="18">for Ollama, Gemini, Groq,</text>
+  <text x="492" y="371" fill="#A9BCDE" font-family="Segoe UI, Arial, sans-serif" font-size="18">and OpenAI-compatible models.</text>
+  <rect x="492" y="414" width="224" height="158" rx="18" fill="#17253C" stroke="#2DD4BF" stroke-width="2.5"/>
+  <text x="518" y="456" fill="#90E8FF" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700">Teacher-style output</text>
+  <text x="518" y="496" fill="#F5F8FF" font-family="Segoe UI, Arial, sans-serif" font-size="18">Explain</text>
+  <text x="518" y="526" fill="#F5F8FF" font-family="Segoe UI, Arial, sans-serif" font-size="18">Summarize</text>
+  <text x="518" y="556" fill="#F5F8FF" font-family="Segoe UI, Arial, sans-serif" font-size="18">Feynman</text>
+
+  <rect x="840" y="220" width="300" height="430" rx="26" fill="#111B2E" stroke="#243657"/>
+  <text x="878" y="272" fill="#F7FAFF" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="700">3. Practice</text>
+  <text x="878" y="315" fill="#A9BCDE" font-family="Segoe UI, Arial, sans-serif" font-size="18">Generate grounded quizzes,</text>
+  <text x="878" y="343" fill="#A9BCDE" font-family="Segoe UI, Arial, sans-serif" font-size="18">teacher recovery cards, and</text>
+  <text x="878" y="371" fill="#A9BCDE" font-family="Segoe UI, Arial, sans-serif" font-size="18">mistake-driven review loops.</text>
+  <rect x="878" y="414" width="224" height="54" rx="16" fill="url(#accent)"/>
+  <text x="990" y="448" text-anchor="middle" fill="#FFFFFF" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="700">Quiz</text>
+  <rect x="878" y="486" width="224" height="54" rx="16" fill="#18263D"/>
+  <text x="990" y="520" text-anchor="middle" fill="#FFFFFF" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="700">Flashcards</text>
+  <rect x="878" y="558" width="224" height="54" rx="16" fill="#18263D"/>
+  <text x="990" y="592" text-anchor="middle" fill="#FFFFFF" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="700">Mistake Book</text>
+
+  <rect x="1226" y="220" width="256" height="430" rx="26" fill="#111B2E" stroke="#243657"/>
+  <text x="1264" y="272" fill="#F7FAFF" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="700">4. Review Loop</text>
+  <text x="1264" y="315" fill="#A9BCDE" font-family="Segoe UI, Arial, sans-serif" font-size="18">Track weak areas, due cards,</text>
+  <text x="1264" y="343" fill="#A9BCDE" font-family="Segoe UI, Arial, sans-serif" font-size="18">study heatmap, and progress</text>
+  <text x="1264" y="371" fill="#A9BCDE" font-family="Segoe UI, Arial, sans-serif" font-size="18">without leaving the workspace.</text>
+  <circle cx="1354" cy="500" r="82" fill="#18263D" stroke="#4F7EFF" stroke-width="10"/>
+  <text x="1354" y="509" text-anchor="middle" fill="#FFFFFF" font-family="Segoe UI, Arial, sans-serif" font-size="38" font-weight="700">FSRS</text>
+  <rect x="1280" y="604" width="148" height="34" rx="17" fill="url(#ok)"/>
+  <text x="1354" y="627" text-anchor="middle" fill="#FFFFFF" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">Due Today</text>
+
+  <path d="M370 430H438" stroke="#6C80A7" stroke-width="6" stroke-linecap="round"/>
+  <path d="M758 430H824" stroke="#6C80A7" stroke-width="6" stroke-linecap="round"/>
+  <path d="M1144 430H1210" stroke="#6C80A7" stroke-width="6" stroke-linecap="round"/>
+  <path d="M423 414L454 430L423 446" fill="#6C80A7"/>
+  <path d="M809 414L840 430L809 446" fill="#6C80A7"/>
+  <path d="M1195 414L1226 430L1195 446" fill="#6C80A7"/>
+</svg>
